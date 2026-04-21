@@ -1,0 +1,62 @@
+<view class="container">
+  <view wx:if="{{!workout}}" class="empty-state">
+    <text class="empty-text">未找到训练任务</text>
+  </view>
+
+  <view wx:else>
+    <view class="workout-header">
+      <view class="workout-type-badge badge-{{workout.type}}">
+        <text class="badge-text">{{workout.type === 'easy' ? '轻松跑' : workout.type === 'long' ? '长距离' : workout.type === 'quality' ? '质量课' : workout.type === 'recovery' ? '恢复跑' : workout.type === 'strength' ? '力量' : workout.type === 'rest' ? '休息' : '训练'}}</text>
+      </view>
+      <text class="workout-title">{{workout.title}}</text>
+      <text class="workout-target">{{workout.target}}</text>
+    </view>
+
+    <view class="section-card">
+      <text class="section-icon">🎯</text>
+      <text class="section-title">做什么</text>
+      <text class="section-text">{{workout.target || '按计划完成训练'}}</text>
+    </view>
+
+    <view wx:if="{{workout.purpose}}" class="section-card">
+      <text class="section-icon">💡</text>
+      <text class="section-title">为什么做</text>
+      <text class="section-text">{{workout.purpose}}</text>
+    </view>
+
+    <view wx:if="{{workout.why_today_text}}" class="section-card">
+      <text class="section-icon">📅</text>
+      <text class="section-title">为什么今天做</text>
+      <text class="section-text">{{workout.why_today_text}}</text>
+    </view>
+
+    <view wx:if="{{workout.reminder_text}}" class="section-card">
+      <text class="section-icon">⚠️</text>
+      <text class="section-title">怎么判断做得对</text>
+      <text class="section-text">{{workout.reminder_text}}</text>
+    </view>
+
+    <view wx:if="{{workout.avoid_text}}" class="section-card section-warning">
+      <text class="section-icon">🚫</text>
+      <text class="section-title">今天不要做</text>
+      <text class="section-text">{{workout.avoid_text}}</text>
+    </view>
+
+    <view wx:if="{{workout.paceTarget}}" class="section-card">
+      <text class="section-icon">⏱️</text>
+      <text class="section-title">配速目标</text>
+      <text class="section-text">{{workout.paceTarget}}</text>
+    </view>
+
+    <view wx:if="{{isCompleted}}" class="completed-card">
+      <text class="completed-emoji">✅</text>
+      <text class="completed-text">已完成训练</text>
+      <text class="completed-detail" wx:if="{{record}}">{{record.distance}}km · {{record.duration}}分钟</text>
+    </view>
+
+    <view wx:else class="action-area">
+      <text class="action-hint">完成训练后，点击下方按钮反馈训练情况</text>
+      <button class="btn-primary" bindtap="onGoToFeedback">训练反馈</button>
+    </view>
+  </view>
+</view>

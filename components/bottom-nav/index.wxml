@@ -1,0 +1,13 @@
+<view class="nav-shell {{themeClass}}">
+  <view class="nav-card">
+    <view class="nav-item {{current === 'home' ? 'nav-item-active' : ''}}" data-page="home" bindtap="navigate">
+      <text class="nav-text">今日</text>
+    </view>
+    <view class="nav-item {{current === 'plan' ? 'nav-item-active' : ''}}" data-page="plan" bindtap="navigate">
+      <text class="nav-text">计划</text>
+    </view>
+    <view class="nav-item {{current === 'me' ? 'nav-item-active' : ''}}" data-page="me" bindtap="navigate">
+      <text class="nav-text">我的</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<view class="page-shell {{themeClass}}">
+  <view class="hero-card">
+    <text class="eyebrow">目标成绩</text>
+    <text class="headline">设置你的目标成绩</text>
+    <text class="body section-gap">目标成绩会影响训练计划的生成和后续调整。</text>
+  </view>
+
+  <view class="card">
+    <text class="title-md">选择目标模式</text>
+    <view class="chip-row">
+      <view class="option-chip {{goalType === 'steady_finish' ? 'option-chip-active' : ''}}" data-value="steady_finish" bindtap="chooseGoal">稳稳完赛</view>
+      <view class="option-chip {{goalType === 'improve_time' ? 'option-chip-active' : ''}}" data-value="improve_time" bindtap="chooseGoal">冲成绩</view>
+      <view class="option-chip {{goalType === 'run_walk_finish' ? 'option-chip-active' : ''}}" data-value="run_walk_finish" bindtap="chooseGoal">跑走跑完</view>
+      <view class="option-chip {{goalType === 'rebuild_plan' ? 'option-chip-active' : ''}}" data-value="rebuild_plan" bindtap="chooseGoal">重建计划</view>
+      <view class="option-chip {{goalType === 'adjust_pacing' ? 'option-chip-active' : ''}}" data-value="adjust_pacing" bindtap="chooseGoal">调整配速</view>
+      <view class="option-chip {{goalType === 'change_race' ? 'option-chip-active' : ''}}" data-value="change_race" bindtap="chooseGoal">调整配速区间</view>
+      <view class="option-chip {{goalType === 'adjust_goalTime' ? 'option-chip-active' : ''}}" data-value="adjustGoalTime" bindtap="chooseGoal">目标时间</view>
+      <view class="option-chip {{goalType === 'other' ? 'option-chip-active' : ''}}" data-value="other" bindtap="chooseGoal">其他</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">目标时间</text>
+    <text class="helper-text">格式：HH:MM:SS，例如 2:30:00</text>
+    <view class="time-input-row">
+      <text class="time-label">时</text>
+      <input class="time-input" type="number" placeholder="2:30:00" bindinput="updateGoalTime" value="{{goalTimeDisplay}}" />
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">确认修改</text>
+    <text class="body section-gap">修改目标成绩后，系统会根据你的训练反馈自动调整后续计划。如果选择"冲成绩"，目标时间会自动下调；选择"稳稳完赛"则目标时间会自动上调。如果选择"跑走跑完"，目标时间会自动上调（但训练难度会降低）。</text>
+    <text class="caption section-gap">目标成绩的修改会影响后续训练计划的生成和调整。</text>
+  </view>
+
+  <view class="card">
+    <button class="primary-button" bindtap="submit">保存并生成新计划</button>
+    <button class="ghost-button" bindtap="goBack">返回</button>
+  </view>
+</view>

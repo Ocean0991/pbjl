@@ -1,0 +1,53 @@
+:root {
+  --color-primary: #000000;
+  --color-primary-white: #FFFFFF;
+  
+  --color-success: #34C759;
+  --color-warning: #FF9500;
+  --color-error: #FF3B30;
+  --color-info: #007AFF;
+  
+  --color-gray-1: #1C1C1E;
+  --color-gray-2: #3A3A3C;
+  --color-gray-3: #636366;
+  --color-gray-4: #C7C7CC;
+  --color-gray-5: #F2F2F7;
+  --color-gray-6: #E5E5EA;
+  
+  --color-easy-run: #34C759;
+  --color-long-run: #007AFF;
+  --color-quality: #FF9500;
+  --color-recovery: #8E8E93;
+  --color-strength: #AF52DE;
+  --color-rest: #E5E5EA;
+  
+  --spacing-xxs: 4px;
+  --spacing-xs: 8px;
+  --spacing-s: 12px;
+  --spacing-m: 16px;
+  --spacing-l: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-h4: 18px;
+  --font-size-body: 16px;
+  --font-size-caption: 14px;
+  --font-size-small: 12px;
+  
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-xl: 20px;
+  
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+}

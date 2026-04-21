@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="chat-header">
+    <view class="header-back" bindtap="onBack">
+      <text class="back-arrow">‹</text>
+    </view>
+    <view class="header-info">
+      <text class="header-title">AI 教练</text>
+      <text class="header-subtitle">基于你的训练数据</text>
+    </view>
+    <view class="header-spacer"></view>
+  </view>
+
+  <scroll-view class="chat-body" scroll-y scroll-into-view="{{scrollToView}}" scroll-with-animation>
+    <view wx:for="{{messages}}" wx:key="id" id="msg-{{item.id}}" class="message {{item.role === 'user' ? 'message-user' : 'message-coach'}}">
+      <view wx:if="{{item.role === 'coach'}}" class="coach-avatar">
+        <text class="avatar-emoji">🤖</text>
+      </view>
+      <view class="message-bubble {{item.role === 'user' ? 'bubble-user' : 'bubble-coach'}}">
+        <text class="message-text">{{item.content}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{isTyping}}" class="message message-coach">
+      <view class="coach-avatar">
+        <text class="avatar-emoji">🤖</text>
+      </view>
+      <view class="message-bubble bubble-coach typing-bubble">
+        <view class="typing-dots">
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{suggestedQuestions.length > 0 && messages.length <= 1}}" class="suggestions">
+    <text class="suggestions-title">你可以问我</text>
+    <view class="suggestions-list">
+      <view wx:for="{{suggestedQuestions}}" wx:key="index" class="suggestion-chip" bindtap="onSuggestedQuestion" data-question="{{item}}">
+        <text class="suggestion-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="input-bar">
+    <input class="chat-input" placeholder="问我关于训练的任何问题..." value="{{inputText}}" bindinput="onInputChange" bindconfirm="onSend" confirm-type="send" />
+    <view class="send-btn {{inputText ? 'send-btn-active' : ''}}" bindtap="onSend">
+      <text class="send-icon">↑</text>
+    </view>
+  </view>
+</view>

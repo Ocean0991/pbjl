@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="header">
+    <text class="header-title">比赛指南</text>
+    <text class="header-sub">第一次跑半马，这些你需要知道</text>
+  </view>
+
+  <view class="countdown-bar">
+    <text class="countdown-label">距离比赛</text>
+    <text class="countdown-value">{{raceCountdown}} 天</text>
+    <text class="countdown-phase">{{currentPhase}}</text>
+  </view>
+
+  <view class="sections">
+    <view wx:for="{{sections}}" wx:key="title" class="section-card">
+      <view class="section-header">
+        <text class="section-icon">{{item.icon}}</text>
+        <text class="section-title">{{item.title}}</text>
+      </view>
+      <view class="section-items">
+        <view wx:for="{{item.items}}" wx:for-item="subItem" wx:key="title" class="item-row">
+          <text class="item-title">• {{subItem.title}}</text>
+          <text class="item-desc">{{subItem.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-tip">
+    <text class="tip-text">💡 有任何问题，随时在"AI教练"里提问</text>
+  </view>
+</view>

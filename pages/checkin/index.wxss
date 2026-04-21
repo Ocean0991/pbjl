@@ -1,0 +1,378 @@
+.container {
+  padding: 0;
+  padding-bottom: 40px;
+  background-color: #F2F2F7;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+  padding: 20px 20px 0;
+  margin-bottom: 4px;
+}
+
+.workout-info-bar {
+  margin: 12px 20px 0;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.workout-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.workout-target {
+  font-size: 14px;
+  color: #636366;
+  display: block;
+}
+
+.section {
+  margin: 20px 20px 0;
+}
+
+.section-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.completion-options {
+  display: flex;
+  gap: 8px;
+}
+
+.option-card {
+  flex: 1;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  padding: 16px 10px;
+  text-align: center;
+  border: 2px solid transparent;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.15s ease;
+}
+
+.option-selected {
+  border-color: #000000;
+  background-color: #000000;
+}
+
+.option-selected .option-label,
+.option-selected .option-desc {
+  color: #FFFFFF;
+}
+
+.option-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.option-desc {
+  font-size: 11px;
+  color: #8E8E93;
+  display: block;
+}
+
+.rpe-scale {
+  display: flex;
+  gap: 4px;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.rpe-item {
+  flex: 1;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F2F2F7;
+  transition: all 0.15s ease;
+}
+
+.rpe-selected {
+  background-color: #000000;
+}
+
+.rpe-selected .rpe-value {
+  color: #FFFFFF;
+}
+
+.rpe-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1C1C1E;
+}
+
+.rpe-hint {
+  font-size: 12px;
+  color: #8E8E93;
+  display: block;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.feeling-options {
+  display: flex;
+  gap: 6px;
+}
+
+.feeling-item {
+  flex: 1;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  padding: 14px 6px;
+  text-align: center;
+  border: 2px solid transparent;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  transition: all 0.15s ease;
+}
+
+.feeling-selected {
+  border-color: #000000;
+}
+
+.feeling-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.feeling-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #3A3A3C;
+  display: block;
+}
+
+.reason-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.reason-chip {
+  padding: 10px 16px;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+  border: 1.5px solid #E5E5EA;
+  transition: all 0.15s ease;
+}
+
+.reason-selected {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+.reason-selected .reason-text {
+  color: #FFFFFF;
+}
+
+.reason-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1C1C1E;
+}
+
+.data-row {
+  display: flex;
+  gap: 10px;
+}
+
+.data-input-group {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  padding: 0 14px;
+  height: 52px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.data-input {
+  flex: 1;
+  font-size: 16px;
+  height: 52px;
+}
+
+.data-unit {
+  font-size: 14px;
+  color: #8E8E93;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.notes-input {
+  width: 100%;
+  height: 88px;
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 15px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.btn-submit {
+  margin: 24px 20px 0;
+  width: calc(100% - 40px);
+  height: 56px;
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+}
+
+.btn-submit::after {
+  border: none;
+}
+
+.result-view {
+  padding: 20px;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.result-emoji {
+  font-size: 56px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.result-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+}
+
+.result-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.result-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8E8E93;
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.result-text {
+  font-size: 16px;
+  color: #1C1C1E;
+  line-height: 24px;
+  display: block;
+}
+
+.result-flags {
+  margin-bottom: 16px;
+}
+
+.flag-item {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin-bottom: 8px;
+}
+
+.flag-warning { background-color: rgba(255, 149, 0, 0.08); }
+.flag-info { background-color: rgba(0, 122, 255, 0.08); }
+.flag-alert { background-color: rgba(255, 59, 48, 0.08); }
+
+.flag-icon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.flag-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1C1C1E;
+}
+
+.adjustment-entry {
+  margin-bottom: 16px;
+}
+
+.adjustment-entry .btn-secondary {
+  width: 100%;
+  height: 48px;
+  background-color: #F2F2F7;
+  color: #1C1C1E;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+}
+
+.adjustment-entry .btn-secondary::after {
+  border: none;
+}
+
+.result-view .btn-primary {
+  width: 100%;
+  height: 56px;
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 600;
+  border: none;
+}
+
+.result-view .btn-primary::after {
+  border: none;
+}
+
+.trust-note {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  background-color: rgba(52, 199, 89, 0.08);
+  border-radius: 14px;
+  margin-bottom: 16px;
+}
+
+.trust-icon {
+  font-size: 18px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.trust-text {
+  font-size: 14px;
+  color: #1C1C1E;
+  line-height: 22px;
+  flex: 1;
+}

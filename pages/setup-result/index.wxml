@@ -1,0 +1,61 @@
+<view class="page-shell {{themeClass}}">
+  <view class="hero-card result-hero">
+    <text class="eyebrow">{{isBlocked ? '筛查结果' : '计划已生成'}}</text>
+    <text class="headline">{{resultTitle}}</text>
+    <text class="body section-gap">{{resultBody}}</text>
+    <view class="badge-row">
+      <text wx:if="{{!isBlocked}}" class="badge badge-accent">{{goalLabel}}</text>
+      <text class="badge">{{raceDaysLeft}} 天后比赛</text>
+      <text class="badge">{{isBlocked ? screening.riskLabel : plan.totalWeeks + ' 周计划'}}</text>
+    </view>
+  </view>
+
+  <view class="card key-card">
+    <text class="title-md">{{priorityTitle}}</text>
+    <text class="title-lg section-gap">{{priorityBody}}</text>
+    <text class="caption section-gap">{{priorityHint}}</text>
+  </view>
+
+  <view wx:if="{{!isBlocked && matchingFactors.length}}" class="card">
+    <text class="title-md">{{matchingTitle}}</text>
+    <view wx:for="{{matchingFactors}}" wx:key="*this" class="list-item">
+      <text class="body">{{index + 1}}. {{item}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">为什么是这份计划</text>
+    <text class="body section-gap">{{trustBody}}</text>
+    <text class="caption section-gap">{{trustCaption}}</text>
+  </view>
+
+  <view wx:if="{{!isBlocked && plan.trainingMixLabels && plan.trainingMixLabels.length}}" class="card">
+    <text class="title-md">这份计划不只安排跑步</text>
+    <view class="badge-row">
+      <text wx:for="{{plan.trainingMixLabels}}" wx:key="*this" class="badge badge-accent">{{item}}</text>
+    </view>
+    <text class="caption section-gap">系统会把这些训练混合进去，尽量让你既能提升耐力，也能把恢复、稳定和低冲击刺激一起守住。</text>
+  </view>
+
+  <view wx:if="{{!isBlocked && currentWeek}}" class="card">
+    <text class="title-md">{{currentWeek.label}} 怎么看</text>
+    <view class="list-item">
+      <text class="body">这周重点</text>
+      <text class="caption">{{currentWeek.focus}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">你之后会在首页看到什么</text>
+      <text class="caption">今天该练什么、最重要提醒、别乱做什么，以及状态差了怎么改。</text>
+    </view>
+  </view>
+
+  <button class="primary-button" bindtap="openHome">{{isBlocked ? '先去看今天建议' : '开始看今天训练'}}</button>
+  <button wx:if="{{!isBlocked}}" class="ghost-button" bindtap="openPlan">先看完整计划</button>
+
+  <view wx:if="{{!isBlocked}}" class="card section-gap" style="margin-top: 12rpx;">
+    <text class="title-md">接下来可以做两件事</text>
+    <text class="body section-gap">把入口放近一点，后面每天看今天该练什么会更顺手。</text>
+    <button class="primary-button" open-type="share">告诉朋友我开始了</button>
+    <button class="ghost-button" bindtap="showMiniProgramGuide">添加到我的小程序</button>
+  </view>
+</view>

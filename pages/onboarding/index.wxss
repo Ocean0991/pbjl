@@ -1,0 +1,234 @@
+.container {
+  padding: 16px;
+  padding-bottom: 100px;
+  background-color: #F2F2F7;
+  min-height: 100vh;
+}
+
+.progress-bar {
+  height: 4px;
+  background-color: #E5E5EA;
+  border-radius: 2px;
+  margin-bottom: 16px;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #007AFF;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.step-indicator {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.step-text {
+  font-size: 14px;
+  color: #636366;
+}
+
+.content {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.step-content {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.step-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+  margin-bottom: 24px;
+}
+
+.input-group {
+  margin-bottom: 24px;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.input-field {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background-color: #F2F2F7;
+  font-size: 16px;
+  color: #1C1C1E;
+  border: none;
+}
+
+.gender-options {
+  display: flex;
+  gap: 12px;
+}
+
+.gender-item {
+  flex: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: #F2F2F7;
+}
+
+.gender-selected {
+  background-color: #007AFF;
+}
+
+.gender-text {
+  font-size: 16px;
+  color: #1C1C1E;
+}
+
+.gender-selected .gender-text {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.picker-field {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background-color: #F2F2F7;
+  display: flex;
+  align-items: center;
+}
+
+.picker-text {
+  font-size: 16px;
+  color: #1C1C1E;
+}
+
+.yes-no-options {
+  display: flex;
+  gap: 12px;
+}
+
+.yes-no-item {
+  flex: 1;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background-color: #F2F2F7;
+}
+
+.yes-no-selected {
+  background-color: #007AFF;
+}
+
+.yes-no-text {
+  font-size: 16px;
+  color: #1C1C1E;
+}
+
+.yes-no-selected .yes-no-text {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.number-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.number-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: #F2F2F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #007AFF;
+}
+
+.number-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  min-width: 48px;
+  text-align: center;
+}
+
+.weekday-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.weekday-item {
+  width: calc((100% - 48px) / 7);
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: #F2F2F7;
+}
+
+.weekday-selected {
+  background-color: #007AFF;
+}
+
+.weekday-text {
+  font-size: 14px;
+  color: #1C1C1E;
+}
+
+.weekday-selected .weekday-text {
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.action-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background-color: #FFFFFF;
+  border-top: 0.5px solid #E5E5EA;
+  display: flex;
+  gap: 12px;
+}
+
+.action-buttons button {
+  flex: 1;
+}

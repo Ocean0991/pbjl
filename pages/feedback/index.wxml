@@ -1,0 +1,59 @@
+<view class="page-shell feedback-shell {{themeClass}}">
+  <view class="feedback-panel">
+    <view class="panel-handle"></view>
+    <text class="eyebrow">意见反馈</text>
+    <text class="headline">意见反馈</text>
+
+    <view class="feedback-block">
+      <text class="field-heading">想对我说点什么</text>
+      <textarea
+        class="feedback-textarea"
+        maxlength="{{maxContentLength}}"
+        placeholder="比如哪里不顺手、哪里很好用，或者你想要的新功能..."
+        placeholder-class="feedback-placeholder"
+        value="{{content}}"
+        bindinput="handleContentInput"
+      />
+      <text class="field-count">{{content.length}} / {{maxContentLength}}</text>
+    </view>
+
+    <view class="feedback-block compact-block">
+      <text class="field-heading">联系方式（选填）</text>
+      <input
+        class="feedback-input"
+        maxlength="80"
+        placeholder="邮箱 / 微信 / QQ，方便我回你"
+        placeholder-class="feedback-placeholder"
+        value="{{contact}}"
+        bindinput="handleContactInput"
+      />
+    </view>
+
+    <view class="feedback-block">
+      <view class="split-row">
+        <text class="field-heading">补充截图（最多9张）</text>
+        <text class="field-count">{{screenshots.length}} / {{maxImageCount}}</text>
+      </view>
+      <view class="screenshot-grid">
+        <view class="add-tile" bindtap="chooseImages">
+          <text class="add-plus">+</text>
+          <text class="add-label">添加图片</text>
+        </view>
+        <view wx:for="{{screenshots}}" wx:key="*this" class="screenshot-tile">
+          <image class="screenshot-image" src="{{item}}" mode="aspectFill" bindtap="previewImage" data-url="{{item}}" />
+          <view class="remove-badge" bindtap="removeImage" data-index="{{index}}">删除</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="feedback-meta">
+      <text class="caption">已记录 {{totalFeedbackCount}} 条本地反馈</text>
+      <text class="caption">最近一次提交：{{lastSubmittedAtText}}</text>
+    </view>
+
+    <view class="action-row">
+      <button class="ghost-button action-button" bindtap="cancel">取消</button>
+      <button class="primary-button action-button submit-button" bindtap="submitFeedback">发送反馈</button>
+    </view>
+  </view>
+</view>

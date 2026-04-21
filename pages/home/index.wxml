@@ -1,0 +1,175 @@
+<view class="page-shell {{themeClass}} {{showLanding ? 'landing-shell' : ''}}">
+  <block wx:if="{{showLanding}}">
+    <view class="hero-card landing-hero landing-hero-compact">
+      <text class="eyebrow">首场赛事陪跑</text>
+      <text class="headline">按你的状态，给你一份能坚持下去的训练计划。</text>
+      <text class="caption section-gap">先花 2 分钟建档，再开始。</text>
+      <view class="badge-row landing-badge-row">
+        <text class="badge badge-accent">跑步</text>
+        <text class="badge">力量</text>
+        <text class="badge">恢复</text>
+      </view>
+      <button class="primary-button" bindtap="startSetup">开始建档</button>
+    </view>
+  </block>
+
+  <block wx:else>
+  <view class="hero-card home-hero">
+    <view class="hero-main">
+      <text class="eyebrow">距离比赛</text>
+      <view class="hero-number-row">
+        <text class="hero-number">{{raceDaysLeft}}</text>
+        <text class="hero-number-unit">天</text>
+      </view>
+      <text class="hero-number-label">{{raceNameDisplay}}</text>
+      <text wx:if="{{trainingPhaseLabel}}" class="hero-phase-label">{{trainingPhaseLabel}}</text>
+    </view>
+    <view class="hero-metrics-grid">
+      <view class="hero-metric-item">
+        <text class="hero-metric-value">{{currentWeekNumber}}</text>
+        <text class="hero-metric-label">当前周</text>
+      </view>
+      <view class="hero-metric-item">
+        <text class="hero-metric-value">{{weeklyCompletedCount}}</text>
+        <text class="hero-metric-label">本周完成</text>
+      </view>
+      <view class="hero-metric-item">
+        <text class="hero-metric-value">{{riskLevelText}}</text>
+        <text class="hero-metric-label">状态</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{todayTask}}" class="card task-card main-task-card">
+    <view class="task-card-header">
+      <text class="eyebrow">{{isRestDay ? '今日安排' : '今日训练'}}</text>
+      <view wx:if="{{todayTask.type === 'long' || todayTask.type === 'quality'}}" class="key-workout-badge">关键训练</view>
+    </view>
+    <text class="title-lg">{{todayTask.title}}</text>
+    <text class="task-target">{{todayTask.target}}</text>
+
+    <view wx:if="{{todayTask.paceTarget}}" class="task-pace-row">
+      <text class="task-pace-label">目标配速</text>
+      <text class="task-pace-value">{{todayTask.paceTarget}}/公里</text>
+    </view>
+
+    <view wx:if="{{todayTask.reminder}}" class="task-reminder">
+      <text>{{todayTask.reminder}}</text>
+    </view>
+
+    <view wx:if="{{todayFeedbackText}}" class="feedback-note">
+      <text class="caption">{{todayFeedbackText}}</text>
+    </view>
+
+    <view class="task-actions">
+      <button wx:if="{{!hasTodayFeedback}}" class="primary-button" bindtap="goCheckin">完成后去打卡</button>
+      <button wx:elif="{{latestAdjustment && latestAdjustment.dateKey === todayKey}}" class="primary-button" bindtap="handleTodayAction">查看今天建议</button>
+      <button wx:else class="ghost-button" disabled="true">已记录</button>
+    </view>
+
+    <view class="task-detail-trigger" bindtap="openWorkoutDetail">
+      <text class="detail-text">查看训练详情</text>
+      <text class="detail-arrow">›</text>
+    </view>
+  </view>
+
+  <view wx:if="{{todayTask && todayTask.purpose}}" class="card explanation-card">
+    <text class="title-md">为什么今天练这个</text>
+    <text class="body section-gap">{{todayTask.purpose}}</text>
+    <view wx:if="{{todayTask.reasonNote}}" class="explanation-note">
+      <text class="caption">{{todayTask.reasonNote}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{todayTask && todayTask.avoid}}" class="card avoid-card">
+    <text class="title-md">今天不要做什么</text>
+    <text class="body section-gap">{{todayTask.avoid}}</text>
+  </view>
+
+  <view wx:if="{{motivationText}}" class="card motivation-card">
+    <text class="motivation-text">{{motivationText}}</text>
+  </view>
+
+  <view wx:if="{{showQuickStatus && !hasTodayFeedback}}" class="card quick-status-card">
+    <text class="title-md">今天状态不对？</text>
+    <text class="caption section-gap">点一下，系统会调整今天的安排</text>
+    <view class="quick-status-grid">
+      <view class="quick-status-item" bindtap="handleQuickStatus" data-status="tired">
+        <text class="status-icon">😔</text>
+        <text class="status-label">有点累</text>
+      </view>
+      <view class="quick-status-item" bindtap="handleQuickStatus" data-status="no_time">
+        <text class="status-icon">⏰</text>
+        <text class="status-label">没时间</text>
+      </view>
+      <view class="quick-status-item" bindtap="handleQuickStatus" data-status="discomfort">
+        <text class="status-icon">🤕</text>
+        <text class="status-label">不舒服</text>
+      </view>
+      <view class="quick-status-item" bindtap="handleQuickStatus" data-status="missed">
+        <text class="status-icon">❌</text>
+        <text class="status-label">没跑成</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{planRiskCard}}" class="card alert-card">
+    <text class="title-md">{{planRiskCard.title}}</text>
+    <text class="body section-gap">{{planRiskCard.description}}</text>
+    <button class="primary-button" bindtap="viewPlanRisk">查看建议</button>
+  </view>
+
+  <view class="card weekly-card">
+    <view class="weekly-progress-header">
+      <text class="title-md">本周只看这几个信号</text>
+      <text class="weekly-progress-percent">{{weeklyProgressPercent}}%</text>
+    </view>
+    <view class="progress-track">
+      <view class="progress-fill" style="width: {{progressWidth}}%;"></view>
+    </view>
+
+    <view class="weekly-signal-list">
+      <view class="weekly-signal-item" wx:for="{{weeklyCardItems}}" wx:key="*this">
+        <view class="weekly-signal-dot status-dot-{{item.type || 'success'}}"></view>
+        <text class="weekly-signal-text">{{item.text || item}}</text>
+      </view>
+    </view>
+
+    <view class="weekly-suggestion-box">
+      <text class="weekly-suggestion-label">下一步建议</text>
+      <text class="weekly-suggestion-text">{{weeklySuggestion}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{predictionChangeText}}" class="card prediction-change-card">
+    <text class="title-md">目标成绩变化</text>
+    <text class="body section-gap">{{predictionChangeText}}</text>
+  </view>
+
+  <view wx:if="{{latestAdjustment}}" class="card adjustment-card">
+    <view class="adjustment-header">
+      <text class="title-md">{{latestAdjustment.todayAction}}</text>
+      <view class="info-trigger" bindtap="showAdjustmentDetail">
+        <text class="info-icon">?</text>
+      </view>
+    </view>
+    <text class="caption">{{latestAdjustment.tomorrowAction}}</text>
+  </view>
+
+  <view wx:if="{{pendingGuide}}" class="card guide-card">
+    <text class="title-md">{{pendingGuide.title}}</text>
+    <text class="body section-gap">{{pendingGuide.body}}</text>
+    <button class="primary-button" bindtap="handleGuideAction">{{pendingGuide.actionText}}</button>
+    <button class="ghost-button" bindtap="dismissGuide">先不了</button>
+  </view>
+
+  <view wx:if="{{sharePrompt}}" class="card share-prompt-card">
+    <text class="title-md">{{sharePrompt.title}}</text>
+    <text class="body section-gap">{{sharePrompt.body}}</text>
+    <button class="primary-button" open-type="share">分享给朋友</button>
+    <button class="ghost-button" bindtap="dismissSharePrompt">先不了</button>
+  </view>
+
+  <bottom-nav current="home" themeClass="{{themeClass}}" />
+  </block>
+</view>

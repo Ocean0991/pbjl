@@ -1,0 +1,107 @@
+<view class="container">
+  <view class="plan-trust-banner">
+    <text class="trust-title">📋 这份计划是根据你的情况量身定做的</text>
+    <text class="trust-desc">会随着你的反馈和状态持续调整</text>
+  </view>
+
+  <view class="month-header">
+    <view class="month-nav">
+      <view class="nav-btn" bindtap="onPrevMonth">
+        <text class="nav-arrow">‹</text>
+      </view>
+      <text class="month-title">{{currentMonth}}</text>
+      <view class="nav-btn" bindtap="onNextMonth">
+        <text class="nav-arrow">›</text>
+      </view>
+    </view>
+    <text class="blackout-hint">长按日期可设置黑名单</text>
+  </view>
+
+  <view class="week-days">
+    <text class="day-label" wx:for="{{weekDays}}" wx:key="index">{{item}}</text>
+  </view>
+
+  <view class="calendar-grid">
+    <view wx:for="{{calendarDays}}" wx:key="dateKey"
+          class="day-cell {{item.isToday ? 'day-today' : ''}} {{item.isCurrentMonth ? '' : 'day-other-month'}} {{item.isBlackout ? 'day-blackout' : ''}}"
+          bindtap="onSelectDate" data-date="{{item.dateKey}}"
+          bindlongpress="onLongPressDate" data-date="{{item.dateKey}}">
+      <text class="day-number">{{item.dayNumber}}</text>
+      <view wx:if="{{item.isBlackout}}" class="blackout-mark">✕</view>
+      <view wx:elif="{{item.hasWorkout}}" class="workout-dot {{'dot-' + item.workoutType}}"></view>
+      <view wx:if="{{item.isCompleted}}" class="completed-check">✓</view>
+    </view>
+  </view>
+
+  <view class="week-detail">
+    <view class="week-header">
+      <text class="week-title">第 {{currentWeekNumber}} 周</text>
+      <text class="week-phase">{{currentPhase}}</text>
+    </view>
+
+    <view class="workout-list">
+      <view wx:for="{{weekWorkouts}}" wx:key="dateKey"
+            class="workout-item {{item.isToday ? 'workout-today' : ''}}"
+            bindtap="onViewWorkout" data-date="{{item.dateKey}}">
+        <view class="workout-date">
+          <text class="date-weekday">{{item.weekday}}</text>
+          <text class="date-day">{{item.dayNumber}}日</text>
+        </view>
+
+        <view class="workout-info">
+          <view class="workout-type-tag {{'tag-' + item.type}}">
+            <text class="tag-text">{{item.typeLabel}}</text>
+          </view>
+          <text class="workout-title">{{item.title}}</text>
+          <text class="workout-target">{{item.target}}</text>
+        </view>
+
+        <view class="workout-status">
+          <view wx:if="{{item.isCompleted}}" class="status-completed">✓</view>
+          <view wx:elif="{{item.isMissed}}" class="status-missed">✕</view>
+          <view wx:else class="status-pending">○</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="plan-overview">
+    <view class="overview-item">
+      <text class="overview-label">总周数</text>
+      <text class="overview-value">{{totalWeeks}}</text>
+    </view>
+    <view class="overview-divider"></view>
+    <view class="overview-item">
+      <text class="overview-label">当前阶段</text>
+      <text class="overview-value">{{currentPhase}}</text>
+    </view>
+    <view class="overview-divider"></view>
+    <view class="overview-item">
+      <text class="overview-label">比赛倒计时</text>
+      <text class="overview-value">{{raceCountdown}}天</text>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{showBlackoutSheet}}" class="blackout-modal">
+  <view class="modal-mask" bindtap="onCloseBlackoutSheet"></view>
+  <view class="blackout-content">
+    <text class="blackout-title">管理 {{longPressDate}}</text>
+    <text class="blackout-desc">黑名单日期不会安排训练，设置后可重新排课</text>
+    <view class="blackout-actions">
+      <view class="blackout-action" bindtap="onAddBlackout">
+        <text class="action-icon">🚫</text>
+        <text class="action-label">设为黑名单</text>
+      </view>
+      <view class="blackout-action" bindtap="onRemoveBlackout">
+        <text class="action-icon">✅</text>
+        <text class="action-label">取消黑名单</text>
+      </view>
+      <view class="blackout-action" bindtap="onReschedule">
+        <text class="action-icon">🔄</text>
+        <text class="action-label">重新排课</text>
+      </view>
+    </view>
+    <button class="btn-text" bindtap="onCloseBlackoutSheet">关闭</button>
+  </view>
+</view>

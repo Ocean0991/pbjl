@@ -1,0 +1,121 @@
+<view class="container">
+  <view class="profile-header">
+    <view class="avatar">
+      <text class="avatar-emoji">🏃</text>
+    </view>
+    <text class="nickname">{{userInfo.nickname || '跑者'}}</text>
+    <text class="goal-race">{{profile.raceName || '首场半程马拉松'}}</text>
+  </view>
+
+  <view class="pr-section card">
+    <view class="section-header">
+      <text class="section-title">个人最佳记录</text>
+      <text class="section-hint">Personal Records</text>
+    </view>
+    <view class="pr-grid">
+      <view class="pr-item">
+        <text class="pr-distance">5公里</text>
+        <text class="pr-time">{{personalRecords.fiveK || '--:--'}}</text>
+        <text class="pr-date">{{personalRecords.fiveKDate || ''}}</text>
+      </view>
+      <view class="pr-item">
+        <text class="pr-distance">10公里</text>
+        <text class="pr-time">{{personalRecords.tenK || '--:--'}}</text>
+        <text class="pr-date">{{personalRecords.tenKDate || ''}}</text>
+      </view>
+      <view class="pr-item">
+        <text class="pr-distance">半程马拉松</text>
+        <text class="pr-time">{{personalRecords.halfMarathon || '--:--'}}</text>
+        <text class="pr-date">{{personalRecords.halfMarathonDate || ''}}</text>
+      </view>
+      <view class="pr-item">
+        <text class="pr-distance">全程马拉松</text>
+        <text class="pr-time">{{personalRecords.fullMarathon || '--:--'}}</text>
+        <text class="pr-date">{{personalRecords.fullMarathonDate || ''}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="training-profile card">
+    <text class="section-title">训练档案</text>
+
+    <view class="profile-item">
+      <text class="item-label">目标距离</text>
+      <text class="item-value">{{profile.raceTypeLabel || '半程马拉松'}}</text>
+    </view>
+
+    <view class="profile-item">
+      <text class="item-label">比赛日期</text>
+      <text class="item-value">{{profile.raceDate || '未设置'}}</text>
+    </view>
+
+    <view class="profile-item">
+      <text class="item-label">训练频率</text>
+      <text class="item-value">{{profile.trainingDaysPerWeek || 3}} 天/周</text>
+    </view>
+
+    <view class="profile-item">
+      <text class="item-label">最长距离</text>
+      <text class="item-value">{{profile.longestRunKm || 0}} km</text>
+    </view>
+  </view>
+
+  <view class="settings-section">
+    <view class="settings-item" bindtap="onEditProfile">
+      <view class="item-left">
+        <text class="item-emoji">✏️</text>
+        <text class="item-text">编辑档案</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+
+    <view class="settings-item" bindtap="onTrainingReminder">
+      <view class="item-left">
+        <text class="item-emoji">🔔</text>
+        <text class="item-text">训练提醒</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+
+    <view class="settings-item" bindtap="onDataSync">
+      <view class="item-left">
+        <text class="item-emoji">🔄</text>
+        <text class="item-text">数据同步</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+
+    <view class="settings-item settings-item-premium" bindtap="onPremium">
+      <view class="item-left">
+        <text class="item-emoji">👑</text>
+        <text class="item-text premium-text">升级 Pro</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+
+    <view class="settings-item" bindtap="onAboutUs">
+      <view class="item-left">
+        <text class="item-emoji">ℹ️</text>
+        <text class="item-text">关于我们</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="stats-summary">
+    <view class="summary-item">
+      <text class="summary-value">{{totalWorkouts}}</text>
+      <text class="summary-label">总训练次数</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-value">{{totalDistance}}</text>
+      <text class="summary-label">总跑量 (km)</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-value">{{totalDuration}}</text>
+      <text class="summary-label">总时长 (小时)</text>
+    </view>
+  </view>
+</view>

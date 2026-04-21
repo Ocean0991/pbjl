@@ -1,0 +1,78 @@
+<view class="page-shell {{themeClass}}">
+  <view class="hero-card">
+    <text class="eyebrow">训练负荷</text>
+    <text class="headline">负荷详情</text>
+    <text class="body section-gap">基于你的训练反馈计算，帮助你了解当前状态。</text>
+  </view>
+
+  <view wx:if="{{snapshot}}" class="card">
+    <view class="state-header">
+      <text class="state-label state-{{stateLabel}}">{{stateLabel === 'push' ? '适合推进' : stateLabel === 'hold' ? '保持节奏' : '需要恢复'}}</text>
+    </view>
+    <text class="body section-gap">{{stateText}}</text>
+  </view>
+
+  <view wx:if="{{snapshot}}" class="card">
+    <text class="title-md">核心指标</text>
+    <view class="metrics-grid">
+      <view class="metric-item">
+        <text class="metric-value">{{snapshot.srpeLoad7d}}</text>
+        <text class="metric-label">7 天负荷</text>
+      </view>
+      <view class="metric-item">
+        <text class="metric-value">{{snapshot.fatigueScore}}</text>
+        <text class="metric-label">疲劳指数</text>
+      </view>
+      <view class="metric-item">
+        <text class="metric-value">{{snapshot.fitnessScore}}</text>
+        <text class="metric-label">体能指数</text>
+      </view>
+      <view class="metric-item">
+        <text class="metric-value">{{snapshot.formScore}}</text>
+        <text class="metric-label">状态指数</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{snapshot}}" class="card">
+    <text class="title-md">连续性与完成率</text>
+    <view class="stat-row">
+      <text class="stat-label">14 天连续性</text>
+      <text class="stat-value">{{snapshot.consistency14d}}%</text>
+    </view>
+    <view class="stat-row">
+      <text class="stat-label">关键训练完成率</text>
+      <text class="stat-value">{{snapshot.keyWorkoutCompletion14d}}%</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">指标解释</text>
+    <view class="explain-list">
+      <view class="explain-item">
+        <text class="explain-term">sRPE 负荷</text>
+        <text class="explain-desc">训练时长（分钟）× RPE（主观强度），反映单次训练的总负荷。</text>
+      </view>
+      <view class="explain-item">
+        <text class="explain-term">疲劳指数</text>
+        <text class="explain-desc">基于 7 天负荷和主观感受综合计算，越高说明越需要恢复。</text>
+      </view>
+      <view class="explain-item">
+        <text class="explain-term">体能指数</text>
+        <text class="explain-desc">基于 14 天完成率和关键训练完成率计算，反映训练积累。</text>
+      </view>
+      <view class="explain-item">
+        <text class="explain-term">状态指数</text>
+        <text class="explain-desc">体能 - 疲劳，正值适合推进，负值需要恢复。</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="caption">{{summaryText}}</text>
+  </view>
+
+  <view class="card">
+    <button class="ghost-button" bindtap="goBack">返回</button>
+  </view>
+</view>

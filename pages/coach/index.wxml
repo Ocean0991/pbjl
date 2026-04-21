@@ -1,0 +1,46 @@
+<view class="page-shell {{themeClass}}">
+  <view class="coach-header">
+    <text class="eyebrow">训练教练</text>
+    <text class="body">根据你的训练数据回答问题</text>
+    <view class="context-toggle" bindtap="toggleContext">
+      <text class="context-toggle-text">{{showContext ? '收起上下文' : '查看上下文'}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{showContext}}" class="card context-card">
+    <text class="title-md">教练上下文</text>
+    <text class="context-text">{{contextSummary}}</text>
+  </view>
+
+  <view class="chat-area">
+    <view wx:for="{{messages}}" wx:key="index" class="chat-message chat-{{item.role}}">
+      <view class="chat-bubble">
+        <text class="chat-text">{{item.text}}</text>
+      </view>
+    </view>
+    <view wx:if="{{sending}}" class="chat-message chat-coach">
+      <view class="chat-bubble chat-typing">
+        <text class="chat-text">正在思考...</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="preset-area">
+    <scroll-view scroll-x="true" class="preset-scroll">
+      <view class="preset-list">
+        <view wx:for="{{presetQuestions}}" wx:key="*this" class="preset-chip" data-question="{{item}}" bindtap="selectPreset">
+          <text class="preset-text">{{item}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="input-area">
+    <view class="input-row">
+      <input class="chat-input" placeholder="问教练一个问题" value="{{inputText}}" bindinput="updateInput" bindconfirm="sendMessage" confirm-type="send" />
+      <view class="send-button {{inputText ? 'send-active' : ''}}" bindtap="sendMessage">
+        <text class="send-text">发送</text>
+      </view>
+    </view>
+  </view>
+</view>

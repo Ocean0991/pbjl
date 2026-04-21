@@ -1,0 +1,34 @@
+<view class="page-shell {{themeClass}}">
+  <view class="hero-card">
+    <text class="eyebrow">计划版本</text>
+    <text class="headline">计划变更记录</text>
+    <text class="body section-gap">每次你重建计划或触发降级，系统都会记录一个新版本。</text>
+  </view>
+
+  <view class="card">
+    <text class="title-md">版本历史</text>
+    <view class="version-list">
+      <view wx:for="{{versions}}" wx:key="id" class="version-item {{item.status === 'active' ? 'version-active' : ''}}" data-id="{{item.id}}" bindtap="viewVersion">
+        <view class="version-header">
+          <text class="version-label">{{item.label}}</text>
+          <text wx:if="{{item.status === 'active'}}" class="badge badge-accent">当前版本</text>
+        </view>
+        <text class="version-goal">{{item.goalLabel}}</text>
+        <text class="version-date">{{item.createdAt}}</text>
+        <text class="version-summary">{{item.summary}}</text>
+        <view class="version-meta">
+          <text class="version-meta-item">{{item.weeksCount}} 周</text>
+          <text class="version-meta-item">比赛日 {{item.raceDate}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{versions.length === 0}}" class="card">
+    <text class="body">还没有计划变更记录。建档时生成的初始计划就是当前版本。</text>
+  </view>
+
+  <view class="card">
+    <button class="ghost-button" bindtap="goBack">返回</button>
+  </view>
+</view>

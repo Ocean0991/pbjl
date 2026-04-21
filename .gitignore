@@ -1,0 +1,9 @@
+node_modules/
+miniprogram_npm/
+.DS_Store
+*.log
+npm-debug.log*
+.env
+.env.local
+.env.*.local
+project.private.config.json

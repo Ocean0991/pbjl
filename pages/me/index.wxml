@@ -1,0 +1,175 @@
+<view class="page-shell {{themeClass}}">
+  <view class="hero-card profile-hero">
+    <text class="eyebrow">我的计划</text>
+    <text class="headline">{{profile.raceName || '首场半程马拉松'}}</text>
+    <text class="body section-gap">{{raceCountdownText}}</text>
+    <text class="caption section-gap">{{focusText}}</text>
+    <view class="badge-row">
+      <text class="badge badge-accent">{{goalLabel}}</text>
+      <text class="badge">{{riskLabel}}</text>
+      <text class="badge">v{{planState.planVersion}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">当前计划概览</text>
+    <view class="metric-row compact-metric-row">
+      <view class="metric">
+        <text class="metric-value">{{profile.trainingDaysPerWeek}}</text>
+        <text class="metric-label">每周训练天数</text>
+      </view>
+      <view class="metric">
+        <text class="metric-value">{{longestRunLabel}}</text>
+        <text class="metric-label">当前最长距离</text>
+      </view>
+      <view class="metric">
+        <text class="metric-value">{{planState.planVersion}}</text>
+        <text class="metric-label">计划版本</text>
+      </view>
+    </view>
+    <view class="plan-summary-row">
+      <view class="summary-item">
+        <text class="caption">当前目标</text>
+        <text class="body summary-value">{{goalLabel}}</text>
+      </view>
+      <view class="summary-item">
+        <text class="caption">计划状态</text>
+        <text class="body summary-value">{{planStatusLabel}}</text>
+      </view>
+    </view>
+    <view class="list-item">
+      <text class="body">是否重组过计划</text>
+      <text class="caption">{{hasRebuiltPlanText}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">最近一次重组</text>
+      <text class="caption">{{lastRebuiltAtText}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">训练数据</text>
+    <view class="nav-list">
+      <view class="nav-list-item" bindtap="openWeeklyReview">
+        <text class="nav-list-text">周复盘</text>
+        <text class="nav-list-arrow">›</text>
+      </view>
+      <view class="nav-list-item" bindtap="openPrediction">
+        <text class="nav-list-text">成绩预测</text>
+        <text class="nav-list-arrow">›</text>
+      </view>
+      <view class="nav-list-item" bindtap="openCoach">
+        <text class="nav-list-text">训练教练</text>
+        <text class="nav-list-arrow">›</text>
+      </view>
+      <view class="nav-list-item" bindtap="openPlanHistory">
+        <text class="nav-list-text">计划版本历史</text>
+        <text class="nav-list-arrow">›</text>
+      </view>
+      <view class="nav-list-item" bindtap="openLoadDetail">
+        <text class="nav-list-text">训练负荷详情</text>
+        <text class="nav-list-arrow">›</text>
+      </view>
+      <view class="nav-list-item" bindtap="openGoalSetting">
+        <text class="nav-list-text">目标成绩设置</text>
+        <text class="nav-list-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">现在最常用的操作</text>
+    <text class="body section-gap">如果比赛日期、每周可训练天数或者你的基础变了，直接从这里改，不需要重新摸索。</text>
+    <button class="primary-button" bindtap="regeneratePlan">重新生成计划</button>
+    <button class="ghost-button" bindtap="redoSetup">重新建档</button>
+  </view>
+
+  <view class="card">
+    <text class="title-md">提醒与快捷入口</text>
+    <text class="caption section-gap">{{subscriptionStatusText}}</text>
+    <button class="primary-button" bindtap="openReminderGuide">开启提醒</button>
+    <button class="ghost-button" bindtap="openMiniProgramGuide">添加到我的小程序</button>
+    <button class="ghost-button" bindtap="openFavoriteGuide">收藏今日训练页</button>
+  </view>
+
+  <view class="card">
+    <text class="title-md">分享与表达</text>
+    <text class="body section-gap">如果你想把训练进度发给朋友，就从这里走，不需要翻很多地方。</text>
+    <button class="primary-button" open-type="share" data-share-source="me_settings">分享给好友</button>
+    <button class="ghost-button" bindtap="guideTimelineShare">分享到朋友圈</button>
+  </view>
+
+  <view class="card">
+    <text class="title-md">档案信息</text>
+    <view class="list-item">
+      <text class="body">称呼</text>
+      <text class="caption">{{displayNameLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">性别</text>
+      <text class="caption">{{genderLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">出生年份</text>
+      <text class="caption">{{birthYearLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">比赛日期</text>
+      <text class="caption">{{profile.raceDate}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">当前最长距离</text>
+      <text class="caption">{{longestRunLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">最近每周跑量</text>
+      <text class="caption">{{weeklyMileageLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">每周跑几次</text>
+      <text class="caption">{{weeklyRunsLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">计划类型</text>
+      <text class="caption">{{plan.modeLabel}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">健康档案</text>
+    <view class="list-item">
+      <text class="body">身体状态</text>
+      <text class="caption">{{symptomStatusLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">运动损伤</text>
+      <text class="caption">{{injuryStatusLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">常态睡眠</text>
+      <text class="caption">{{sleepHoursLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">心率变异性</text>
+      <text class="caption">{{hrvLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">心率摘要</text>
+      <text class="caption">{{heartRateSummaryLabel}}</text>
+    </view>
+    <view class="list-item">
+      <text class="body">10K 最好成绩</text>
+      <text class="caption">{{tenKPaceLabel}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">联系与反馈</text>
+    <text class="body section-gap">如果你有想说的话，直接告诉我哪里不顺手、哪里帮到你，或者你希望下一版补什么。</text>
+    <button class="primary-button" open-type="contact">在线客服</button>
+    <button class="ghost-button" bindtap="openFeedbackPage">意见反馈</button>
+    <button class="ghost-button" bindtap="openAboutAuthorPage">关于作者</button>
+  </view>
+
+  <bottom-nav current="me" themeClass="{{themeClass}}" />
+</view>

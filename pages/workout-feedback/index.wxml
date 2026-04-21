@@ -1,0 +1,96 @@
+<view class="container">
+  <view class="completion-header">
+    <view class="checkmark-circle">
+      <text class="checkmark-icon">✓</text>
+    </view>
+    <text class="completion-title">训练完成</text>
+    <text class="completion-subtitle">{{workout.title}}</text>
+  </view>
+
+  <view class="stats-summary">
+    <view class="summary-item">
+      <text class="summary-value">{{record.distance}}</text>
+      <text class="summary-unit">km</text>
+      <text class="summary-label">距离</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-value">{{record.duration}}</text>
+      <text class="summary-unit">分钟</text>
+      <text class="summary-label">时长</text>
+    </view>
+    <view class="summary-divider"></view>
+    <view class="summary-item">
+      <text class="summary-value">{{avgPace}}</text>
+      <text class="summary-unit">配速</text>
+      <text class="summary-label">平均配速</text>
+    </view>
+  </view>
+
+  <view wx:if="{{coachComment}}" class="coach-comment card">
+    <view class="comment-header">
+      <text class="comment-emoji">🤖</text>
+      <text class="comment-title">教练评语</text>
+    </view>
+    <text class="comment-text">{{coachComment}}</text>
+  </view>
+
+  <view wx:if="{{adjustmentSuggestion}}" class="adjustment-card card">
+    <view class="adjustment-header">
+      <text class="adjustment-emoji">💡</text>
+      <text class="adjustment-title">调整建议</text>
+    </view>
+    <text class="adjustment-text">{{adjustmentSuggestion}}</text>
+  </view>
+
+  <view class="feedback-section">
+    <text class="section-title">训练感受</text>
+
+    <view class="rpe-rating">
+      <text class="rpe-label">RPE 评分（主观疲劳度）</text>
+      <view class="rpe-scale">
+        <view wx:for="{{rpeScale}}" wx:key="value"
+              class="rpe-item {{selectedRPE === item.value ? 'rpe-selected' : ''}}"
+              bindtap="onSelectRPE" data-value="{{item.value}}">
+          <text class="rpe-value">{{item.value}}</text>
+          <text class="rpe-label">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="feeling-options">
+      <text class="feeling-label">身体感受</text>
+      <view class="feeling-list">
+        <view wx:for="{{feelingOptions}}" wx:key="value"
+              class="feeling-item {{selectedFeeling === item.value ? 'feeling-selected' : ''}}"
+              bindtap="onSelectFeeling" data-value="{{item.value}}">
+          <text class="feeling-emoji">{{item.icon}}</text>
+          <text class="feeling-text">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="completion-options">
+      <text class="completion-label">完成情况</text>
+      <view class="completion-list">
+        <view wx:for="{{completionOptions}}" wx:key="value"
+              class="completion-item {{selectedCompletion === item.value ? 'completion-selected' : ''}}"
+              bindtap="onSelectCompletion" data-value="{{item.value}}">
+          <text class="completion-text">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="notes-section">
+      <text class="notes-label">备注（可选）</text>
+      <textarea class="notes-input"
+                placeholder="记录你的训练感受..."
+                bindinput="onInputNotes"
+                value="{{notes}}"></textarea>
+    </view>
+  </view>
+
+  <view class="action-buttons">
+    <button class="btn-primary" bindtap="onSubmit">提交反馈</button>
+  </view>
+</view>

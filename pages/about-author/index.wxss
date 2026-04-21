@@ -1,0 +1,11 @@
+.author-hero {
+  padding-bottom: 34rpx;
+}
+
+.quote-card .list-item:first-child {
+  padding-top: 0;
+}
+
+.principle-title {
+  font-weight: 600;
+}

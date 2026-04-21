@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "首场半马陪跑",
+  "usingComponents": {
+    "bottom-nav": "/components/bottom-nav/index",
+    "accordion": "/components/accordion/index",
+    "bottom-sheet": "/components/bottom-sheet/index"
+  }
+}

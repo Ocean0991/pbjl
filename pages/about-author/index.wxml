@@ -1,0 +1,32 @@
+<view class="page-shell {{themeClass}}">
+  <view class="hero-card author-hero">
+    <text class="eyebrow">About The Maker</text>
+    <text class="headline">关于作者</text>
+    <text class="body section-gap">我想做的，不是一个更复杂的跑步 App，而是一个在你准备第一场赛事时，能每天给你一个清楚答案的小工具。</text>
+  </view>
+
+  <view class="card">
+    <text class="title-md">为什么做它</text>
+    <text class="body section-gap">第一次认真备赛的人，最常见的问题不是“不知道跑步”，而是不知道今天到底该练什么、状态差时该怎么改、哪里不能乱练。</text>
+    <text class="body section-gap">所以这款小程序从一开始就没打算做得很大，只想把“首场赛事陪跑”这件事做得更克制一点、更可信一点。</text>
+  </view>
+
+  <view class="card quote-card">
+    <text class="title-md">这版想守住的几件事</text>
+    <view class="list-item" wx:for="{{principles}}" wx:key="title">
+      <text class="body principle-title">{{item.title}}</text>
+      <text class="caption section-gap">{{item.body}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">这一页暂时不写什么</text>
+    <text class="body section-gap">这版先不硬塞夸张履历，也不写“权威背书”来增加信任感。更重要的，是把规则说清楚，把产品体验做稳。</text>
+  </view>
+
+  <view class="card">
+    <text class="title-md">如果你想告诉我什么</text>
+    <text class="body section-gap">哪里不顺手、哪句文案不舒服、你真正想要的功能，都会比“看起来更专业”更有价值。</text>
+    <button class="primary-button" bindtap="openFeedback">去意见反馈</button>
+  </view>
+</view>

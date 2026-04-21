@@ -1,0 +1,100 @@
+.accordion {
+  border-radius: 24rpx;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.theme-dark .accordion {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.theme-light .accordion {
+  background: rgba(17, 31, 49, 0.04);
+  border: 1rpx solid rgba(17, 31, 49, 0.06);
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 28rpx;
+  min-height: 88rpx;
+}
+
+.accordion-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.accordion-icon {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+}
+
+.accordion-title {
+  font-size: 26rpx;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.theme-dark .accordion-title {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.theme-light .accordion-title {
+  color: rgba(19, 32, 46, 0.75);
+}
+
+.accordion-arrow {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon {
+  font-size: 32rpx;
+  font-weight: 300;
+  transform: rotate(90deg);
+  display: block;
+}
+
+.theme-dark .arrow-icon {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.theme-light .arrow-icon {
+  color: rgba(19, 32, 46, 0.45);
+}
+
+.arrow-up .arrow-icon {
+  transform: rotate(-90deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.content-visible {
+  max-height: 1000rpx;
+  padding: 0 28rpx 24rpx;
+}
+
+.accordion-content-slot {
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.theme-dark .accordion-content-slot {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-light .accordion-content-slot {
+  color: rgba(19, 32, 46, 0.65);
+}

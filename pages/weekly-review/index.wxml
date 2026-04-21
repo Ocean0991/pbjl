@@ -1,0 +1,74 @@
+<view class="container">
+  <view wx:if="{{!hasData}}" class="empty-state">
+    <text class="empty-title">还没有训练数据</text>
+    <text class="empty-desc">完成一周训练后，这里会生成你的周报</text>
+  </view>
+
+  <view wx:else>
+    <view class="review-header">
+      <text class="review-title">{{weekLabel}}</text>
+      <text class="review-risk">{{riskLabel}}</text>
+    </view>
+
+    <view class="completion-card card">
+      <text class="completion-label">本周完成度</text>
+      <view class="completion-bar">
+        <view class="completion-fill" style="width: {{completionRate}}%"></view>
+      </view>
+      <text class="completion-value">{{completionRate}}%</text>
+    </view>
+
+    <view class="review-items card">
+      <text class="items-title">本周回顾</text>
+      <view wx:for="{{reviewItems}}" wx:key="index" class="review-item">
+        <view class="item-dot"></view>
+        <text class="item-text">{{item}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{tsbStatus}}" class="body-status card">
+      <text class="status-title">身体状态</text>
+      <view class="status-row">
+        <text class="status-label">当前状态</text>
+        <text class="status-value">{{tsbStatus.label}}</text>
+      </view>
+      <text class="status-desc">{{tsbStatus.description}}</text>
+      <text class="status-rec">{{tsbStatus.recommendation}}</text>
+    </view>
+
+    <view wx:if="{{loadData}}" class="load-summary card">
+      <text class="load-title">训练负荷</text>
+      <view class="load-row">
+        <view class="load-item">
+          <text class="load-value">{{loadData.atl}}</text>
+          <text class="load-label">疲劳度 ATL</text>
+        </view>
+        <view class="load-item">
+          <text class="load-value">{{loadData.ctl}}</text>
+          <text class="load-label">体能 CTL</text>
+        </view>
+        <view class="load-item">
+          <text class="load-value">{{loadData.tsb}}</text>
+          <text class="load-label">状态 TSB</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="week-workouts card">
+      <text class="workouts-title">本周训练</text>
+      <view wx:for="{{weekWorkouts}}" wx:key="dateKey" class="workout-row">
+        <view class="workout-status-dot {{item.isCompleted ? 'dot-done' : item.isMissed ? 'dot-missed' : 'dot-pending'}}"></view>
+        <view class="workout-info">
+          <text class="workout-name">{{item.typeLabel}}</text>
+          <text class="workout-target">{{item.target}}</text>
+        </view>
+        <text class="workout-status {{item.isCompleted ? 'status-done' : item.isMissed ? 'status-missed' : 'status-pending-text'}}">{{item.isCompleted ? '已完成' : item.isMissed ? '未完成' : '待完成'}}</text>
+      </view>
+    </view>
+
+    <view class="next-suggestion card">
+      <text class="suggestion-title">下周建议</text>
+      <text class="suggestion-text">{{nextSuggestion}}</text>
+    </view>
+  </view>
+</view>

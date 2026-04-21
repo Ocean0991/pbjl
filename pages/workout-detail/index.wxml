@@ -1,0 +1,91 @@
+<view class="container">
+  <view wx:if="{{!workout}}" class="empty-state">
+    <text class="empty-text">未找到训练任务</text>
+  </view>
+
+  <view wx:else>
+    <view class="hero hero-{{workout.type}}">
+      <view class="hero-type-tag">
+        <text class="hero-type-text">{{workout.type === 'easy' ? '轻松跑' : workout.type === 'long' ? '长距离' : workout.type === 'quality' ? '质量课' : workout.type === 'recovery' ? '恢复跑' : workout.type === 'strength' ? '力量训练' : workout.type === 'rest' ? '休息' : '训练'}}</text>
+      </view>
+      <text class="hero-title">{{workout.title}}</text>
+      <text class="hero-date">{{dateLabel}}</text>
+      <text class="hero-target">{{workout.target}}</text>
+    </view>
+
+    <view class="sections">
+      <view class="section-block">
+        <view class="section-header">
+          <view class="section-dot dot-do"></view>
+          <text class="section-title">做什么</text>
+        </view>
+        <view class="section-body">
+          <text class="section-text">{{workout.target || '按计划完成训练'}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{workout.purpose}}" class="section-block">
+        <view class="section-header">
+          <view class="section-dot dot-why"></view>
+          <text class="section-title">为什么做</text>
+        </view>
+        <view class="section-body">
+          <text class="section-text">{{workout.purpose}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{workout.why_today_text}}" class="section-block">
+        <view class="section-header">
+          <view class="section-dot dot-when"></view>
+          <text class="section-title">为什么今天做</text>
+        </view>
+        <view class="section-body">
+          <text class="section-text">{{workout.why_today_text}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{workout.reminder_text || workout.reminder}}" class="section-block">
+        <view class="section-header">
+          <view class="section-dot dot-how"></view>
+          <text class="section-title">怎么判断做得对</text>
+        </view>
+        <view class="section-body">
+          <text class="section-text">{{workout.reminder_text || workout.reminder}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{workout.avoid_text || workout.avoid}}" class="section-block section-avoid">
+        <view class="section-header">
+          <view class="section-dot dot-avoid"></view>
+          <text class="section-title">今天不要做</text>
+        </view>
+        <view class="section-body">
+          <text class="section-text text-avoid">{{workout.avoid_text || workout.avoid}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{workout.paceTarget}}" class="pace-card">
+      <text class="pace-label">配速目标</text>
+      <text class="pace-value">{{workout.paceTarget}}</text>
+      <text class="pace-hint">每公里用时</text>
+    </view>
+
+    <view wx:if="{{workout.heartRateTarget}}" class="hr-card">
+      <text class="hr-label">心率目标</text>
+      <text class="hr-value">{{workout.heartRateTarget}}</text>
+    </view>
+
+    <view wx:if="{{isCompleted}}" class="done-section">
+      <view class="done-badge">
+        <text class="done-icon">✓</text>
+        <text class="done-label">已完成</text>
+      </view>
+      <text class="done-detail" wx:if="{{record}}">{{record.distance}}km · {{record.duration}}分钟</text>
+    </view>
+
+    <view wx:else class="bottom-action">
+      <button class="btn-checkin" bindtap="onGoToCheckin">完成后反馈</button>
+    </view>
+  </view>
+</view>

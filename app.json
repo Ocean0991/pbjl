@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/welcome/index",
+    "pages/today/index",
+    "pages/plan/index",
+    "pages/training/index",
+    "pages/profile/index",
+    "pages/onboarding/index",
+    "pages/workout-detail/index",
+    "pages/workout-execution/index",
+    "pages/checkin/index",
+    "pages/adjustment/index",
+    "pages/workout-feedback/index",
+    "pages/ai-coach/index",
+    "pages/prediction/index",
+    "pages/weekly-review/index",
+    "pages/race-guide/index",
+    "pages/settings/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTitleText": "跑步教练",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#8E8E93",
+    "selectedColor": "#FFFFFF",
+    "backgroundColor": "#000000",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/today/index",
+        "text": "今日",
+        "iconPath": "assets/icons/today.png",
+        "selectedIconPath": "assets/icons/today-active.png"
+      },
+      {
+        "pagePath": "pages/plan/index",
+        "text": "计划",
+        "iconPath": "assets/icons/plan.png",
+        "selectedIconPath": "assets/icons/plan-active.png"
+      },
+      {
+        "pagePath": "pages/training/index",
+        "text": "训练",
+        "iconPath": "assets/icons/training.png",
+        "selectedIconPath": "assets/icons/training-active.png"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

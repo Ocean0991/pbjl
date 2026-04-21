@@ -1,0 +1,151 @@
+.container {
+  padding: 16px;
+  padding-bottom: 120px;
+  background-color: #F2F2F7;
+  min-height: 100vh;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.empty-text {
+  font-size: 16px;
+  color: #8E8E93;
+}
+
+.workout-header {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.workout-type-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.badge-easy { background-color: rgba(52, 199, 89, 0.1); }
+.badge-long { background-color: rgba(0, 122, 255, 0.1); }
+.badge-quality { background-color: rgba(255, 149, 0, 0.1); }
+.badge-recovery { background-color: rgba(142, 142, 147, 0.1); }
+.badge-strength { background-color: rgba(175, 82, 222, 0.1); }
+.badge-rest { background-color: #E5E5EA; }
+
+.badge-easy .badge-text { color: #34C759; }
+.badge-long .badge-text { color: #007AFF; }
+.badge-quality .badge-text { color: #FF9500; }
+.badge-recovery .badge-text { color: #8E8E93; }
+.badge-strength .badge-text { color: #AF52DE; }
+.badge-rest .badge-text { color: #636366; }
+
+.badge-text {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.workout-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.workout-target {
+  font-size: 18px;
+  font-weight: 500;
+  color: #3A3A3C;
+  display: block;
+}
+
+.section-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.section-warning {
+  border-left: 4px solid #FF3B30;
+}
+
+.section-icon {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.section-text {
+  font-size: 15px;
+  color: #3A3A3C;
+  line-height: 24px;
+  display: block;
+}
+
+.section-warning .section-text {
+  color: #FF3B30;
+}
+
+.completed-card {
+  background-color: rgba(52, 199, 89, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.completed-emoji {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.completed-text {
+  font-size: 18px;
+  font-weight: 600;
+  color: #34C759;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.completed-detail {
+  font-size: 14px;
+  color: #34C759;
+  display: block;
+}
+
+.action-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  padding-bottom: 32px;
+  background-color: #FFFFFF;
+  border-top: 0.5px solid #E5E5EA;
+  text-align: center;
+}
+
+.action-hint {
+  font-size: 14px;
+  color: #636366;
+  display: block;
+  margin-bottom: 12px;
+}

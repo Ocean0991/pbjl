@@ -1,0 +1,244 @@
+.coach-header {
+  padding: 40rpx 32rpx 24rpx;
+  text-align: center;
+}
+
+.context-toggle {
+  margin-top: 16rpx;
+  display: inline-block;
+}
+
+.context-toggle-text {
+  font-size: 24rpx;
+  font-weight: 500;
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+}
+
+.theme-dark .context-toggle-text {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-light .context-toggle-text {
+  background: rgba(17, 31, 49, 0.06);
+  color: rgba(19, 32, 46, 0.65);
+}
+
+.context-card {
+  margin: 0 32rpx 16rpx;
+}
+
+.context-text {
+  font-size: 24rpx;
+  line-height: 1.6;
+  white-space: pre-line;
+  margin-top: 12rpx;
+  display: block;
+}
+
+.theme-dark .context-text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-light .context-text {
+  color: rgba(19, 32, 46, 0.65);
+}
+
+.chat-area {
+  flex: 1;
+  padding: 16rpx 32rpx;
+  overflow-y: auto;
+  padding-bottom: 200rpx;
+}
+
+.chat-message {
+  margin-bottom: 20rpx;
+  display: flex;
+}
+
+.chat-user {
+  justify-content: flex-end;
+}
+
+.chat-coach {
+  justify-content: flex-start;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 24rpx 28rpx;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.chat-user .chat-bubble {
+  border-bottom-right-radius: 8rpx;
+}
+
+.theme-dark .chat-user .chat-bubble {
+  background: rgba(46, 204, 113, 0.15);
+}
+
+.theme-light .chat-user .chat-bubble {
+  background: rgba(46, 204, 113, 0.12);
+}
+
+.chat-coach .chat-bubble {
+  border-bottom-left-radius: 8rpx;
+}
+
+.theme-dark .chat-coach .chat-bubble {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.theme-light .chat-coach .chat-bubble {
+  background: rgba(17, 31, 49, 0.06);
+}
+
+.chat-typing {
+  opacity: 0.6;
+}
+
+.chat-text {
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.theme-dark .chat-text {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.theme-light .chat-text {
+  color: rgba(19, 32, 46, 0.85);
+}
+
+.preset-area {
+  position: fixed;
+  bottom: 120rpx;
+  left: 0;
+  right: 0;
+  padding: 0 32rpx;
+  z-index: 10;
+}
+
+.preset-scroll {
+  white-space: nowrap;
+}
+
+.preset-list {
+  display: inline-flex;
+  gap: 12rpx;
+}
+
+.preset-chip {
+  display: inline-flex;
+  padding: 14rpx 24rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.theme-dark .preset-chip {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1rpx solid rgba(255, 255, 255, 0.08);
+}
+
+.theme-light .preset-chip {
+  background: rgba(17, 31, 49, 0.04);
+  color: rgba(19, 32, 46, 0.75);
+  border: 1rpx solid rgba(17, 31, 49, 0.06);
+}
+
+.preset-chip:active {
+  opacity: 0.7;
+}
+
+.preset-text {
+  font-size: 24rpx;
+}
+
+.input-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16rpx 32rpx calc(16rpx + env(safe-area-inset-bottom));
+  z-index: 10;
+}
+
+.theme-dark .input-area {
+  background: #111318;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.06);
+}
+
+.theme-light .input-area {
+  background: #f5f5f5;
+  border-top: 1rpx solid rgba(17, 31, 49, 0.06);
+}
+
+.input-row {
+  display: flex;
+  gap: 12rpx;
+  align-items: center;
+}
+
+.chat-input {
+  flex: 1;
+  height: 72rpx;
+  padding: 0 24rpx;
+  border-radius: 999rpx;
+  font-size: 28rpx;
+}
+
+.theme-dark .chat-input {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.theme-light .chat-input {
+  background: rgba(17, 31, 49, 0.06);
+  color: #0a0d12;
+}
+
+.send-button {
+  height: 72rpx;
+  padding: 0 28rpx;
+  border-radius: 999rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-dark .send-button {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.theme-light .send-button {
+  background: rgba(17, 31, 49, 0.06);
+}
+
+.send-active {
+  background: rgba(46, 204, 113, 0.15) !important;
+}
+
+.send-text {
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.theme-dark .send-text {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.theme-light .send-text {
+  color: rgba(19, 32, 46, 0.55);
+}
+
+.send-active .send-text {
+  color: #2ecc71 !important;
+}

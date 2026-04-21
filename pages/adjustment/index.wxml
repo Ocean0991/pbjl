@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="page-header">
+    <text class="page-title">调整建议</text>
+    <text class="page-subtitle">基于你的训练反馈，系统建议以下调整</text>
+  </view>
+
+  <view class="reason-card card">
+    <text class="reason-label">调整原因</text>
+    <text class="reason-text">{{reasonText}}</text>
+  </view>
+
+  <view wx:if="{{movedItems.length > 0}}" class="change-section">
+    <text class="change-title">📅 移动的训练</text>
+    <view wx:for="{{movedItems}}" wx:key="dateKey" class="change-item change-moved">
+      <text class="change-name">{{item.title}}</text>
+      <text class="change-detail">{{item.fromDate}} → {{item.toDate}}</text>
+      <text wx:if="{{item.reason}}" class="change-reason">{{item.reason}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{downgradedItems.length > 0}}" class="change-section">
+    <text class="change-title">⬇️ 降级的训练</text>
+    <view wx:for="{{downgradedItems}}" wx:key="dateKey" class="change-item change-downgraded">
+      <text class="change-name">{{item.title}}</text>
+      <text class="change-detail">{{item.fromType}} → {{item.toType}}</text>
+      <text wx:if="{{item.reason}}" class="change-reason">{{item.reason}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{deletedItems.length > 0}}" class="change-section">
+    <text class="change-title">🗑️ 删除的训练</text>
+    <view wx:for="{{deletedItems}}" wx:key="dateKey" class="change-item change-deleted">
+      <text class="change-name">{{item.title}}</text>
+      <text class="change-detail">{{item.dateKey}}</text>
+      <text wx:if="{{item.reason}}" class="change-reason">{{item.reason}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{movedItems.length === 0 && downgradedItems.length === 0 && deletedItems.length === 0}}" class="no-change">
+    <text class="no-change-text">当前不需要调整计划</text>
+  </view>
+
+  <view wx:if="{{!accepted && (movedItems.length > 0 || downgradedItems.length > 0 || deletedItems.length > 0)}}" class="action-buttons">
+    <button class="btn-primary" bindtap="onAccept">接受调整</button>
+    <button class="btn-secondary" bindtap="onReject">保持原计划</button>
+  </view>
+</view>

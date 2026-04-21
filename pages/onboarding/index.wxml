@@ -1,0 +1,147 @@
+<view class="container">
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{progress}}%"></view>
+  </view>
+
+  <view class="step-indicator">
+    <text class="step-text">第 {{currentStep}} / {{totalSteps}} 步</text>
+  </view>
+
+  <view class="content">
+    <view wx:if="{{currentStep === 1}}" class="step-content">
+      <text class="step-title">基本信息</text>
+      
+      <view class="input-group">
+        <text class="input-label">昵称</text>
+        <input class="input-field" placeholder="请输入昵称" bindinput="onInputNickname" value="{{profile.nickname}}" />
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">性别</text>
+        <view class="gender-options">
+          <view class="gender-item {{profile.gender === 'male' ? 'gender-selected' : ''}}" bindtap="onSelectGender" data-value="male">
+            <text class="gender-text">男</text>
+          </view>
+          <view class="gender-item {{profile.gender === 'female' ? 'gender-selected' : ''}}" bindtap="onSelectGender" data-value="female">
+            <text class="gender-text">女</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">出生年份</text>
+        <picker mode="date" fields="year" bindchange="onSelectBirthYear" value="{{profile.birthYear}}">
+          <view class="picker-field">
+            <text class="picker-text">{{profile.birthYear || '请选择'}}</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view wx:if="{{currentStep === 2}}" class="step-content">
+      <text class="step-title">身体数据</text>
+      
+      <view class="input-group">
+        <text class="input-label">身高 (cm)</text>
+        <input class="input-field" type="digit" placeholder="请输入身高" bindinput="onInputHeight" value="{{profile.heightCm}}" />
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">体重 (kg)</text>
+        <input class="input-field" type="digit" placeholder="请输入体重" bindinput="onInputWeight" value="{{profile.weightKg}}" />
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">静息心率 (可选)</text>
+        <input class="input-field" type="number" placeholder="请输入静息心率" bindinput="onInputRestingHR" value="{{profile.restingHeartRate}}" />
+      </view>
+    </view>
+
+    <view wx:if="{{currentStep === 3}}" class="step-content">
+      <text class="step-title">跑步经验</text>
+      
+      <view class="input-group">
+        <text class="input-label">最长跑步距离 (km)</text>
+        <input class="input-field" type="digit" placeholder="请输入最长距离" bindinput="onInputLongestRun" value="{{profile.longestRunKm}}" />
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">最近每周跑量 (km)</text>
+        <input class="input-field" type="digit" placeholder="请输入每周跑量" bindinput="onInputWeeklyMileage" value="{{profile.recentWeeklyMileage}}" />
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">是否完成过10公里</text>
+        <view class="yes-no-options">
+          <view class="yes-no-item {{profile.hasRun10k ? 'yes-no-selected' : ''}}" bindtap="onSelectHasRun10k" data-value="true">
+            <text class="yes-no-text">是</text>
+          </view>
+          <view class="yes-no-item {{!profile.hasRun10k ? 'yes-no-selected' : ''}}" bindtap="onSelectHasRun10k" data-value="false">
+            <text class="yes-no-text">否</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{currentStep === 4}}" class="step-content">
+      <text class="step-title">目标设置</text>
+      
+      <view class="input-group">
+        <text class="input-label">比赛类型</text>
+        <picker bindchange="onSelectRaceType" value="{{raceTypeIndex}}" range="{{raceTypes}}" range-key="label">
+          <view class="picker-field">
+            <text class="picker-text">{{raceTypes[raceTypeIndex].label}}</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">比赛日期</text>
+        <picker mode="date" bindchange="onSelectRaceDate" value="{{profile.raceDate}}">
+          <view class="picker-field">
+            <text class="picker-text">{{profile.raceDate || '请选择'}}</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">目标类型</text>
+        <picker bindchange="onSelectGoalType" value="{{goalTypeIndex}}" range="{{goalTypes}}" range-key="label">
+          <view class="picker-field">
+            <text class="picker-text">{{goalTypes[goalTypeIndex].label}}</text>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view wx:if="{{currentStep === 5}}" class="step-content">
+      <text class="step-title">训练偏好</text>
+      
+      <view class="input-group">
+        <text class="input-label">每周训练天数</text>
+        <view class="number-selector">
+          <view class="number-btn" bindtap="onDecreaseTrainingDays">-</view>
+          <text class="number-value">{{profile.trainingDaysPerWeek}}</text>
+          <view class="number-btn" bindtap="onIncreaseTrainingDays">+</view>
+        </view>
+      </view>
+
+      <view class="input-group">
+        <text class="input-label">偏好训练日 (可多选)</text>
+        <view class="weekday-options">
+          <view wx:for="{{weekdays}}" wx:key="value"
+                class="weekday-item {{item.selected ? 'weekday-selected' : ''}}"
+                bindtap="onToggleWeekday" data-value="{{item.value}}">
+            <text class="weekday-text">{{item.label}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-buttons">
+    <button wx:if="{{currentStep > 1}}" class="btn-secondary" bindtap="onPrevStep">上一步</button>
+    <button wx:if="{{currentStep < totalSteps}}" class="btn-primary" bindtap="onNextStep">下一步</button>
+    <button wx:if="{{currentStep === totalSteps}}" class="btn-primary" bindtap="onComplete">完成</button>
+  </view>
+</view>

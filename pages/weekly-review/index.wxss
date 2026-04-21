@@ -1,0 +1,304 @@
+.container {
+  padding: 16px;
+  padding-bottom: 40px;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.empty-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1C1C1E;
+  margin-bottom: 8px;
+}
+
+.empty-desc {
+  font-size: 14px;
+  color: #636366;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.review-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.review-risk {
+  font-size: 14px;
+  color: #636366;
+  padding: 4px 12px;
+  background-color: #F2F2F7;
+  border-radius: 12px;
+}
+
+.completion-card {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.completion-label {
+  font-size: 14px;
+  color: #636366;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.completion-bar {
+  height: 12px;
+  background-color: #E5E5EA;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.completion-fill {
+  height: 100%;
+  background-color: #34C759;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.completion-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+}
+
+.review-items {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.items-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.review-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.review-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: #007AFF;
+  margin-top: 8px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.item-text {
+  font-size: 15px;
+  color: #3A3A3C;
+  line-height: 22px;
+  flex: 1;
+}
+
+.body-status {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.status-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.status-label {
+  font-size: 14px;
+  color: #636366;
+}
+
+.status-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #34C759;
+  padding: 4px 12px;
+  background-color: rgba(52, 199, 89, 0.1);
+  border-radius: 12px;
+}
+
+.status-desc {
+  font-size: 14px;
+  color: #3A3A3C;
+  line-height: 22px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.status-rec {
+  font-size: 14px;
+  color: #007AFF;
+  font-weight: 500;
+  display: block;
+}
+
+.load-summary {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.load-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.load-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.load-item {
+  text-align: center;
+}
+
+.load-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000000;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.load-label {
+  font-size: 12px;
+  color: #636366;
+  display: block;
+}
+
+.week-workouts {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.workouts-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.workout-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 0.5px solid #F2F2F7;
+}
+
+.workout-row:last-child {
+  border-bottom: none;
+}
+
+.workout-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.dot-done { background-color: #34C759; }
+.dot-missed { background-color: #FF3B30; }
+.dot-pending { background-color: #C7C7CC; }
+
+.workout-info {
+  flex: 1;
+}
+
+.workout-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1C1C1E;
+  display: block;
+}
+
+.workout-target {
+  font-size: 12px;
+  color: #636366;
+  display: block;
+}
+
+.workout-status {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-done { color: #34C759; }
+.status-missed { color: #FF3B30; }
+.status-pending-text { color: #C7C7CC; }
+
+.next-suggestion {
+  background-color: #FFFFFF;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-left: 4px solid #007AFF;
+}
+
+.suggestion-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1C1C1E;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.suggestion-text {
+  font-size: 15px;
+  color: #3A3A3C;
+  line-height: 24px;
+  display: block;
+}

@@ -1,0 +1,25 @@
+.option-chip {
+  min-width: 180rpx;
+}
+
+.metric-input-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18rpx;
+  margin-top: 24rpx;
+}
+
+.metric-input-card {
+  border-radius: 24rpx;
+  padding: 20rpx;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1rpx solid rgba(255, 255, 255, 0.06);
+  box-sizing: border-box;
+}
+
+.compact-input {
+  margin-top: 14rpx;
+  padding: 28rpx 24rpx;
+  min-height: 100rpx;
+  font-size: 30rpx;
+}

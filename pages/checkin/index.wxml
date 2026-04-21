@@ -1,0 +1,125 @@
+<view class="container">
+  <view wx:if="{{!showResult}}">
+    <view class="page-title">训练反馈</view>
+    <view wx:if="{{workout}}" class="workout-info-bar">
+      <text class="workout-name">{{workout.title}}</text>
+      <text class="workout-target">{{workout.target}}</text>
+    </view>
+
+    <view class="section">
+      <text class="section-label">完成度</text>
+      <view class="completion-options">
+        <view wx:for="{{completionOptions}}" wx:key="value"
+              class="option-card {{selectedCompletion === item.value ? 'option-selected' : ''}}"
+              bindtap="onSelectCompletion" data-value="{{item.value}}">
+          <text class="option-label">{{item.label}}</text>
+          <text class="option-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-label">RPE 主观疲劳度</text>
+      <view class="rpe-scale">
+        <view wx:for="{{rpeScale}}" wx:key="value"
+              class="rpe-item {{selectedRPE === item.value ? 'rpe-selected' : ''}}"
+              bindtap="onSelectRPE" data-value="{{item.value}}">
+          <text class="rpe-value">{{item.value}}</text>
+        </view>
+      </view>
+      <text class="rpe-hint">1=极轻 5=适中 10=极限</text>
+    </view>
+
+    <view class="section">
+      <text class="section-label">身体感受</text>
+      <view class="feeling-options">
+        <view wx:for="{{feelingOptions}}" wx:key="value"
+              class="feeling-item {{selectedFeeling === item.value ? 'feeling-selected' : ''}}"
+              bindtap="onSelectFeeling" data-value="{{item.value}}">
+          <text class="feeling-icon">{{item.icon}}</text>
+          <text class="feeling-label">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{selectedCompletion === 'partial' || selectedCompletion === 'missed'}}" class="section">
+      <text class="section-label">特殊原因</text>
+      <view class="reason-options">
+        <view wx:for="{{reasonOptions}}" wx:key="value"
+              class="reason-chip {{selectedReason === item.value ? 'reason-selected' : ''}}"
+              bindtap="onSelectReason" data-value="{{item.value}}">
+          <text class="reason-text">{{item.label}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-label">实际数据（可选）</text>
+      <view class="data-row">
+        <view class="data-input-group">
+          <input class="data-input" type="digit" placeholder="距离" value="{{actualDistance}}" bindinput="onInputDistance" />
+          <text class="data-unit">km</text>
+        </view>
+        <view class="data-input-group">
+          <input class="data-input" type="number" placeholder="时长" value="{{actualDuration}}" bindinput="onInputDuration" />
+          <text class="data-unit">分钟</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="section">
+      <text class="section-label">备注（可选）</text>
+      <textarea class="notes-input" placeholder="记录你的训练感受..." bindinput="onInputNotes" value="{{notes}}" />
+    </view>
+
+    <button class="btn-primary btn-submit" bindtap="onSubmit">提交反馈</button>
+  </view>
+
+  <view wx:else class="result-view">
+    <view class="result-header">
+      <text class="result-emoji">✅</text>
+      <text class="result-title">反馈已提交</text>
+    </view>
+
+    <view class="result-card card">
+      <text class="result-label">今日评价</text>
+      <text class="result-text">{{result.todayEvaluation}}</text>
+    </view>
+
+    <view class="result-card card">
+      <text class="result-label">明日建议</text>
+      <text class="result-text">{{result.tomorrowSuggestion}}</text>
+    </view>
+
+    <view class="result-card card">
+      <text class="result-label">本周策略</text>
+      <text class="result-text">{{result.weekStrategy}}</text>
+    </view>
+
+    <view class="result-flags">
+      <view wx:if="{{result.needReduce}}" class="flag-item flag-warning">
+        <text class="flag-icon">⚠️</text>
+        <text class="flag-text">建议本周减量</text>
+      </view>
+      <view wx:if="{{result.triggerReschedule}}" class="flag-item flag-info">
+        <text class="flag-icon">🔄</text>
+        <text class="flag-text">已触发计划调整</text>
+      </view>
+      <view wx:if="{{result.affectPrediction}}" class="flag-item flag-alert">
+        <text class="flag-icon">📉</text>
+        <text class="flag-text">可能影响目标成绩</text>
+      </view>
+    </view>
+
+    <view wx:if="{{result.triggerReschedule}}" class="adjustment-entry">
+      <button class="btn-secondary" bindtap="onViewAdjustment">查看调整建议</button>
+    </view>
+
+    <view class="trust-note">
+      <text class="trust-icon">💡</text>
+      <text class="trust-text">{{result.trustNote}}</text>
+    </view>
+
+    <button class="btn-primary" bindtap="onGoHome">返回首页</button>
+  </view>
+</view>

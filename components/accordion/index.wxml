@@ -1,0 +1,14 @@
+<view class="accordion {{themeClass}} {{expanded ? 'accordion-expanded' : ''}}" bindtap="toggle">
+  <view class="accordion-header">
+    <view class="accordion-left">
+      <text wx:if="{{icon}}" class="accordion-icon">{{icon}}</text>
+      <text class="accordion-title">{{title}}</text>
+    </view>
+    <view class="accordion-arrow {{expanded ? 'arrow-up' : ''}}">
+      <text class="arrow-icon">›</text>
+    </view>
+  </view>
+  <view class="accordion-content {{expanded ? 'content-visible' : ''}}">
+    <slot></slot>
+  </view>
+</view>

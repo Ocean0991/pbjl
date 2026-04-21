@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="page-header">
+    <text class="page-title">成绩预测</text>
+    <text class="page-sub">{{raceTypeLabel}} · {{daysToRace}}天后</text>
+  </view>
+
+  <view class="prediction-hero">
+    <text class="prediction-label">预测完赛时间</text>
+    <text class="prediction-time">{{predictedTime}}</text>
+    <text class="prediction-pace">配速 {{predictedPace}}/km</text>
+  </view>
+
+  <view class="prediction-details">
+    <view class="detail-row">
+      <text class="detail-label">目标时间</text>
+      <text class="detail-value">{{targetTime}}</text>
+    </view>
+    <view class="detail-row">
+      <text class="detail-label">目标配速</text>
+      <text class="detail-value">{{targetPace}}/km</text>
+    </view>
+    <view class="detail-row">
+      <text class="detail-label">预测范围</text>
+      <text class="detail-value">{{varianceRange}}</text>
+    </view>
+  </view>
+
+  <view class="confidence-section">
+    <view class="confidence-header">
+      <text class="confidence-title">置信度</text>
+      <text class="confidence-value">{{confidenceScore}}%</text>
+    </view>
+    <view class="confidence-bar">
+      <view class="confidence-track">
+        <view class="confidence-fill confidence-fill-{{confidenceLevel}}" style="width: {{confidenceScore}}%"></view>
+      </view>
+    </view>
+    <text class="confidence-desc">{{confidenceLabel === '高' ? '预测较可靠' : confidenceLabel === '中' ? '需要更多数据' : '数据不足，预测仅供参考'}}</text>
+  </view>
+
+  <view wx:if="{{readinessScore}}" class="readiness-section">
+    <view class="readiness-header">
+      <text class="readiness-title">比赛准备度</text>
+      <text class="readiness-value">{{readinessScore}}</text>
+    </view>
+    <view class="readiness-bar">
+      <view class="readiness-track">
+        <view class="readiness-fill" style="width: {{readinessScore}}%"></view>
+      </view>
+    </view>
+    <text class="readiness-label">{{readinessLabel}}</text>
+  </view>
+
+  <view wx:if="{{adviceText}}" class="advice-section">
+    <text class="advice-title">教练建议</text>
+    <text class="advice-text">{{adviceText}}</text>
+  </view>
+
+  <view class="calibrate-btn" bindtap="onCalibrate">
+    <text class="calibrate-text">校准目标时间</text>
+  </view>
+
+  <view class="disclaimer">
+    <text class="disclaimer-text">⚠️ 预测基于历史训练数据，仅供参考</text>
+  </view>
+</view>
+
+<view wx:if="{{showCalibrateModal}}" class="calibrate-modal">
+  <view class="modal-mask" bindtap="onCloseCalibrate"></view>
+  <view class="modal-sheet">
+    <text class="modal-title">校准目标时间</text>
+    <text class="modal-desc">输入你期望的完赛时间（分钟）</text>
+    <input class="modal-input" type="number" placeholder="例如：120" value="{{calibrateMinutes}}" bindinput="onCalibrateInput" />
+    <view class="modal-actions">
+      <view class="modal-cancel" bindtap="onCloseCalibrate">取消</view>
+      <view class="modal-confirm" bindtap="onConfirmCalibrate">确认</view>
+    </view>
+  </view>
+</view>

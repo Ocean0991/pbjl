@@ -1,0 +1,186 @@
+<view class="container">
+  <view class="top-bar">
+    <view class="top-bar-left">
+      <text class="greeting">今天</text>
+      <text class="date-text">{{currentDate}}</text>
+    </view>
+    <view wx:if="{{raceCountdown > 0}}" class="countdown-badge">
+      <text class="countdown-number">{{raceCountdown}}</text>
+      <text class="countdown-label">天</text>
+    </view>
+  </view>
+
+  <view class="status-dashboard">
+    <view class="status-main status-{{statusLevel}}">
+      <text class="status-icon">{{statusLevel === 'good' ? '✅' : statusLevel === 'warning' ? '⚠️' : statusLevel === 'danger' ? '🚨' : '📊'}}</text>
+      <view class="status-content">
+        <text class="status-title">{{statusTitle}}</text>
+        <text class="status-desc">{{statusDesc}}</text>
+      </view>
+    </view>
+    <view class="status-metrics">
+      <view class="metric-item">
+        <text class="metric-value">{{metrics.completionRate}}%</text>
+        <text class="metric-label">完成率</text>
+      </view>
+      <view class="metric-divider"></view>
+      <view class="metric-item">
+        <text class="metric-value">{{metrics.longRunCount}}/{{metrics.longRunTarget}}</text>
+        <text class="metric-label">长距离</text>
+      </view>
+      <view class="metric-divider"></view>
+      <view class="metric-item">
+        <text class="metric-value">{{metrics.fatigueLevel}}</text>
+        <text class="metric-label">疲劳度</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showWarning}}" class="warning-banner">
+    <text class="warning-icon">🚫</text>
+    <view class="warning-content">
+      <text class="warning-title">{{warningTitle}}</text>
+      <text class="warning-desc">{{warningDesc}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{dailyDirection}}" class="direction-strip direction-{{dailyDirection.status}}">
+    <text class="direction-text">{{dailyDirection.title}}</text>
+    <text class="direction-sub">{{dailyDirection.direction}}</text>
+  </view>
+
+  <view wx:if="{{!todayWorkout || todayWorkout.type === 'rest'}}" class="rest-hero">
+    <view class="rest-hero-icon">
+      <text class="rest-hero-emoji">🌙</text>
+    </view>
+    <text class="rest-hero-title">休息日</text>
+    <text class="rest-hero-desc">休息也是训练的一部分，为下次训练蓄力</text>
+  </view>
+
+  <view wx:elif="{{todayWorkout}}" class="workout-hero" bindtap="onStartWorkout">
+    <view class="workout-hero-top">
+      <view class="type-tag tag-{{todayWorkout.type}}">
+        <text class="type-tag-text">{{todayWorkout.typeLabel || (todayWorkout.type === 'easy' ? '慢跑' : todayWorkout.type === 'long' ? '长距离' : todayWorkout.type === 'quality' ? '节奏跑' : todayWorkout.type === 'recovery' ? '恢复跑' : todayWorkout.type === 'strength' ? '核心力量' : todayWorkout.type === 'cross' ? '交叉训练' : todayWorkout.type === 'mobility' ? '拉伸放松' : '训练')}}</text>
+      </view>
+      <view wx:if="{{todayWorkout.is_key_workout}}" class="key-badge">
+        <text class="key-badge-text">关键训练</text>
+      </view>
+    </view>
+    <text class="workout-hero-title">{{todayWorkout.title}}</text>
+    <text class="workout-hero-target">{{todayWorkout.target}}</text>
+
+    <view wx:if="{{todayWorkout.purpose}}" class="workout-hero-purpose">
+      <text class="purpose-text">{{todayWorkout.purpose}}</text>
+    </view>
+
+    <view class="workout-hero-details">
+      <view wx:if="{{todayWorkout.distance}}" class="detail-chip">
+        <text class="chip-label">距离</text>
+        <text class="chip-value">{{todayWorkout.distance}} 公里</text>
+      </view>
+      <view wx:if="{{todayWorkout.paceTarget}}" class="detail-chip">
+        <text class="chip-label">配速</text>
+        <text class="chip-value">{{todayWorkout.paceTarget}}/公里</text>
+      </view>
+      <view wx:if="{{todayWorkout.heartRateTarget}}" class="detail-chip">
+        <text class="chip-label">心率</text>
+        <text class="chip-value">{{todayWorkout.heartRateTarget}}</text>
+      </view>
+    </view>
+
+    <view wx:if="{{todayWorkout.isCompleted}}" class="workout-done">
+      <view class="done-check">✓</view>
+      <text class="done-text">已完成</text>
+    </view>
+    <view wx:else class="workout-hero-action">
+      <view class="action-btn">
+        <text class="action-btn-text">查看详情</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{todayWorkout && todayWorkout.why_today_text}}" class="why-card card">
+    <text class="why-label">为什么今天练这个</text>
+    <text class="why-text">{{todayWorkout.why_today_text}}</text>
+  </view>
+
+  <view wx:if="{{todayWorkout && todayWorkout.reminder_text}}" class="tip-card card">
+    <text class="tip-label">💡 提示</text>
+    <text class="tip-text">{{todayWorkout.reminder_text}}</text>
+  </view>
+
+  <view wx:if="{{todayWorkout && todayWorkout.avoid_text}}" class="avoid-card card">
+    <text class="avoid-label">🚫 避免</text>
+    <text class="avoid-text">{{todayWorkout.avoid_text}}</text>
+  </view>
+
+  <view wx:if="{{weekSummary}}" class="week-section">
+    <view class="week-header">
+      <text class="week-title">本周</text>
+      <text class="week-phase">第{{weekSummary.weekNumber}}周 · {{weekSummary.phase}}</text>
+    </view>
+
+    <view class="week-progress-bar">
+      <view class="progress-track">
+        <view class="progress-fill" style="width: {{weekSummary.completionRate}}%"></view>
+      </view>
+      <text class="progress-text">{{weekSummary.completedCount}}/{{weekSummary.totalDays}} 完成</text>
+    </view>
+
+    <view class="week-stats-row">
+      <view class="week-stat">
+        <text class="stat-number">{{weekSummary.totalDistance}}</text>
+        <text class="stat-unit">km</text>
+        <text class="stat-desc">本周跑量</text>
+      </view>
+      <view class="week-stat-divider"></view>
+      <view class="week-stat">
+        <text class="stat-number">{{weekSummary.completionRate}}%</text>
+        <text class="stat-desc">完成率</text>
+      </view>
+      <view class="week-stat-divider"></view>
+      <view class="week-stat">
+        <text class="stat-number">{{weekSummary.longRunDone ? '✓' : '—'}}</text>
+        <text class="stat-desc">长距离</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{coachAdvice && coachAdvice.advice.length > 0}}" class="coach-section">
+    <text class="coach-section-title">教练建议</text>
+    <view wx:for="{{coachAdvice.advice}}" wx:key="type" class="coach-tip tip-{{item.priority}}">
+      <text class="coach-tip-icon">{{item.icon === 'rest' ? '🌙' : item.icon === 'alert' ? '⚠️' : item.icon === 'warning' ? '⚡' : item.icon === 'check' ? '✅' : item.icon === 'trophy' ? '🏆' : item.icon === 'star' ? '⭐' : item.icon === 'encourage' ? '💪' : '💡'}}</text>
+      <view class="coach-tip-content">
+        <text class="coach-tip-title">{{item.title}}</text>
+        <text class="coach-tip-msg">{{item.message}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="tools-row">
+    <view class="tool-btn" bindtap="onOpenRaceGuide">
+      <view class="tool-icon tool-icon-guide">
+        <text class="tool-emoji">📖</text>
+      </view>
+      <text class="tool-label">比赛指南</text>
+    </view>
+    <view class="tool-btn" bindtap="onOpenAICoach">
+      <view class="tool-icon tool-icon-coach">
+        <text class="tool-emoji">🤖</text>
+      </view>
+      <text class="tool-label">AI 教练</text>
+    </view>
+    <view class="tool-btn" bindtap="onViewPrediction">
+      <view class="tool-icon tool-icon-prediction">
+        <text class="tool-emoji">🎯</text>
+      </view>
+      <text class="tool-label">成绩预测</text>
+    </view>
+    <view class="tool-btn" bindtap="onViewWeeklyReview">
+      <view class="tool-icon tool-icon-review">
+        <text class="tool-emoji">📊</text>
+      </view>
+      <text class="tool-label">周报</text>
+    </view>
+  </view>
+</view>

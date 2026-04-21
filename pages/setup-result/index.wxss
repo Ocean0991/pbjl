@@ -1,0 +1,8 @@
+.result-hero {
+  padding-top: 48rpx;
+}
+
+.key-card {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+}

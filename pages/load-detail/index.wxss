@@ -1,0 +1,121 @@
+.metrics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16rpx;
+  gap: 16rpx;
+}
+
+.metric-item {
+  flex: 1;
+  min-width: 140rpx;
+  text-align: center;
+  padding: 20rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.theme-dark .metric-item {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.theme-light .metric-item {
+  background: rgba(17, 31, 49, 0.04);
+}
+
+.metric-value {
+  font-size: 40rpx;
+  font-weight: 700;
+  display: block;
+}
+
+.theme-dark .metric-value {
+  color: #ffffff;
+}
+
+.theme-light .metric-value {
+  color: #0a0d12;
+}
+
+.metric-label {
+  font-size: 22rpx;
+  margin-top: 8rpx;
+  display: block;
+}
+
+.theme-dark .metric-label {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.theme-light .metric-label {
+  color: rgba(19, 32, 46, 0.5);
+}
+
+.state-badge {
+  display: inline-block;
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  margin-top: 16rpx;
+}
+
+.state-push {
+  background: rgba(46, 204, 113, 0.12);
+  color: #2ecc71;
+}
+
+.state-hold {
+  background: rgba(255, 159, 67, 0.12);
+  color: #ff9f43;
+}
+
+.state-recover {
+  background: rgba(255, 107, 107, 0.12);
+  color: #ff6b6b;
+}
+
+.explain-list {
+  margin-top: 16rpx;
+}
+
+.explain-item {
+  padding: 20rpx 0;
+  border-radius: 16rpx;
+  margin-bottom: 12rpx;
+}
+
+.theme-dark .explain-item {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.theme-light .explain-item {
+  background: rgba(17, 31, 49, 0.04);
+}
+
+.explain-term {
+  font-size: 26rpx;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.theme-dark .explain-term {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.theme-light .explain-term {
+  color: rgba(19, 32, 46, 0.85);
+}
+
+.explain-desc {
+  font-size: 24rpx;
+  line-height: 1.5;
+  display: block;
+}
+
+.theme-dark .explain-desc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.theme-light .explain-desc {
+  color: rgba(19, 32, 46, 0.65);
+}

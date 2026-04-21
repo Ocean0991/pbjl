@@ -1,0 +1,81 @@
+.h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  line-height: 40px;
+  color: var(--color-primary);
+}
+
+.h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  line-height: 32px;
+  color: var(--color-gray-1);
+}
+
+.h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: 28px;
+  color: var(--color-gray-1);
+}
+
+.h4 {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-medium);
+  line-height: 24px;
+  color: var(--color-gray-1);
+}
+
+.body {
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 24px;
+  color: var(--color-gray-1);
+}
+
+.caption {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: 20px;
+  color: var(--color-gray-2);
+}
+
+.small {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+  color: var(--color-gray-3);
+}
+
+.number-large {
+  font-size: 48px;
+  font-weight: var(--font-weight-bold);
+  line-height: 56px;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.number-medium {
+  font-size: 32px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 40px;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.number-small {
+  font-size: 24px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 32px;
+  color: var(--color-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  line-height: 20px;
+  color: var(--color-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

@@ -1,0 +1,43 @@
+<view class="page-shell {{themeClass}}">
+  <view class="welcome-container">
+    <view class="logo-section">
+      <text class="logo-icon">🏃</text>
+      <text class="app-name">跑步教练</text>
+      <text class="app-slogan">陪你完成首场半马</text>
+    </view>
+
+    <view class="intro-section">
+      <text class="intro-title">这是做什么的？</text>
+      <text class="intro-desc">一个帮你准备首场半程马拉松的训练助手。根据你的基础，生成个性化训练计划，每天告诉你该练什么、怎么练。</text>
+    </view>
+
+    <view class="features-section">
+      <view class="feature-item">
+        <text class="feature-icon">📋</text>
+        <view class="feature-content">
+          <text class="feature-title">个性化计划</text>
+          <text class="feature-desc">根据你的水平和目标定制</text>
+        </view>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">📅</text>
+        <view class="feature-content">
+          <text class="feature-title">每日训练</text>
+          <text class="feature-desc">每天告诉你练什么、怎么练</text>
+        </view>
+      </view>
+      <view class="feature-item">
+        <text class="feature-icon">🎯</text>
+        <view class="feature-content">
+          <text class="feature-title">智能调整</text>
+          <text class="feature-desc">状态变化时自动调整计划</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-section">
+      <text class="time-hint">建档约需 2 分钟</text>
+      <button class="primary-button" bindtap="startSetup">开始建档</button>
+    </view>
+  </view>
+</view>

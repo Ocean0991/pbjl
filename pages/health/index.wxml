@@ -1,0 +1,95 @@
+<view class="page-shell {{themeClass}}">
+  <view class="hero-card">
+    <text class="eyebrow">健康档案与筛查</text>
+    <text class="headline">先用你的健康信息，把计划排得更像样一点。</text>
+    <text class="body section-gap">这一页不会只拿来做风险拦截，也会把恢复、伤病和心率信息一起带进计划结构里。后面生成的计划不只安排跑步，还会把力量、交叉训练和灵活性恢复一起排进去。</text>
+    <view class="badge-row">
+      <text class="badge">{{profileSummary.trainingDaysPerWeek}} 天训练窗口</text>
+      <text class="badge">{{profileSummary.goalType === 'easy' ? '轻松完赛' : '稳完赛'}}</text>
+      <text class="badge">{{profileSummary.longestRunKm || 0}} 公里当前最长</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <text class="title-md">健康档案</text>
+    <text class="helper-text">这一版先支持手动填写。就算你不是每项都知道，也没关系，知道几项填几项就够。</text>
+
+    <view class="list-item">
+      <text class="body">身体状态</text>
+      <view class="chip-row">
+        <view class="option-chip {{healthForm.symptomStatus === 'steady' ? 'option-chip-active' : ''}}" data-key="symptomStatus" data-value="steady" bindtap="updateHealthChoice">状态稳定</view>
+        <view class="option-chip {{healthForm.symptomStatus === 'fatigue' ? 'option-chip-active' : ''}}" data-key="symptomStatus" data-value="fatigue" bindtap="updateHealthChoice">有些疲劳</view>
+        <view class="option-chip {{healthForm.symptomStatus === 'discomfort' ? 'option-chip-active' : ''}}" data-key="symptomStatus" data-value="discomfort" bindtap="updateHealthChoice">最近不适</view>
+      </view>
+    </view>
+
+    <view class="list-item">
+      <text class="body">运动损伤</text>
+      <view class="chip-row">
+        <view class="option-chip {{healthForm.injuryStatus === 'none' ? 'option-chip-active' : ''}}" data-key="injuryStatus" data-value="none" bindtap="updateHealthChoice">没有</view>
+        <view class="option-chip {{healthForm.injuryStatus === 'recovering' ? 'option-chip-active' : ''}}" data-key="injuryStatus" data-value="recovering" bindtap="updateHealthChoice">恢复中</view>
+        <view class="option-chip {{healthForm.injuryStatus === 'current' ? 'option-chip-active' : ''}}" data-key="injuryStatus" data-value="current" bindtap="updateHealthChoice">当前受伤</view>
+      </view>
+    </view>
+
+    <view class="metric-input-grid">
+      <view class="metric-input-card">
+        <text class="field-label">身高 (cm)</text>
+        <input class="input-field compact-input" type="number" placeholder="选填" value="{{healthForm.heightCm}}" data-key="heightCm" bindinput="updateHealthInput" />
+      </view>
+      <view class="metric-input-card">
+        <text class="field-label">体重 (kg)</text>
+        <input class="input-field compact-input" type="number" placeholder="选填" value="{{healthForm.weightKg}}" data-key="weightKg" bindinput="updateHealthInput" />
+      </view>
+      <view class="metric-input-card">
+        <text class="field-label">最大心率</text>
+        <input class="input-field compact-input" type="number" placeholder="选填" value="{{healthForm.maxHeartRate}}" data-key="maxHeartRate" bindinput="updateHealthInput" />
+      </view>
+      <view class="metric-input-card">
+        <text class="field-label">静息心率</text>
+        <input class="input-field compact-input" type="number" placeholder="选填" value="{{healthForm.restingHeartRate}}" data-key="restingHeartRate" bindinput="updateHealthInput" />
+      </view>
+      <view class="metric-input-card">
+        <text class="field-label">乳酸阈心率</text>
+        <input class="input-field compact-input" type="number" placeholder="选填" value="{{healthForm.lactateThresholdHr}}" data-key="lactateThresholdHr" bindinput="updateHealthInput" />
+      </view>
+      <view class="metric-input-card">
+        <text class="field-label">最大摄氧量</text>
+        <input class="input-field compact-input" type="digit" placeholder="选填" value="{{healthForm.vo2Max}}" data-key="vo2Max" bindinput="updateHealthInput" />
+      </view>
+      <view class="metric-input-card">
+        <text class="field-label">HRV (ms)</text>
+        <input class="input-field compact-input" type="number" placeholder="选填" value="{{healthForm.hrv}}" data-key="hrv" bindinput="updateHealthInput" />
+      </view>
+      <view class="metric-input-card">
+        <text class="field-label">睡眠时长 (h)</text>
+        <input class="input-field compact-input" type="digit" placeholder="选填" value="{{healthForm.sleepHours}}" data-key="sleepHours" bindinput="updateHealthInput" />
+      </view>
+    </view>
+
+    <text class="helper-text">如果你填了最大心率，后面轻松跑、长距离和交叉训练会给到更像样的心率参考；如果你填了睡眠、伤病和身体状态，计划也会更愿意把高冲击训练换成恢复和低冲击有氧。</text>
+  </view>
+
+  <view class="card">
+    <text class="title-md">安全筛查</text>
+    <block wx:for="{{questions}}" wx:key="key">
+      <view class="list-item">
+        <text class="body">{{index + 1}}. {{item.title}}</text>
+        <view class="chip-row">
+          <view class="option-chip {{answers[item.key] === false ? 'option-chip-active' : ''}}" data-key="{{item.key}}" data-value="false" bindtap="chooseAnswer">没有</view>
+          <view class="option-chip {{answers[item.key] === true ? 'option-chip-active' : ''}}" data-key="{{item.key}}" data-value="true" bindtap="chooseAnswer">有</view>
+        </view>
+      </view>
+    </block>
+
+    <view class="list-item">
+      <text class="caption">先说明白</text>
+      <text class="body">本产品提供训练建议，不提供医疗诊断。</text>
+      <text class="body">如果不适持续，请暂停训练并咨询医生或专业人士。</text>
+      <text class="body">最终训练决策仍需你结合自身身体状况判断。</text>
+    </view>
+
+    <button class="primary-button" bindtap="submit">生成我的训练计划</button>
+    <button class="ghost-button" bindtap="goBack">返回上一步</button>
+  </view>
+</view>
